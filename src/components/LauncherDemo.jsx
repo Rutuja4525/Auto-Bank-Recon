@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { bankAccountsData } from '../data/mockData';
 import { Play, CheckCircle2, RefreshCw, FileText, Send, Eye, HelpCircle } from 'lucide-react';
 
-export default function LauncherDemo({ onRunSimulation }) {
-  const [selectedProperty, setSelectedProperty] = useState("fivf31p - Faropoint Indus Value Fund III");
+export default function LauncherDemo() {
+  const [selectedProperty, setSelectedProperty] = useState("PRP-1004 - Metro Plaza Commercial Portfolio");
   const [cutoffDate, setCutoffDate] = useState("2026-09-30");
   const [accounts, setAccounts] = useState(bankAccountsData);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -50,7 +50,7 @@ export default function LauncherDemo({ onRunSimulation }) {
       {/* Launcher Parameters (Yardi Control Panel Style) */}
       <div className="glass-card" style={{ padding: '20px', marginBottom: '24px' }}>
         <h4 style={{ fontSize: '0.875rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.05em' }}>
-          Filter Parameters (From Yardi Working Solution)
+          Filter Parameters (Yardi Voyager Module)
         </h4>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
@@ -72,8 +72,8 @@ export default function LauncherDemo({ onRunSimulation }) {
                 fontFamily: 'inherit'
               }}
             >
-              <option value="fivf31p - Faropoint Indus Value Fund III">fivf31p - Faropoint Indus Value Fund III</option>
-              <option value="f2c08727 - KUSH-KUSH, LP LOCKBOX">f2c08727 - KUSH-KUSH, LP LOCKBOX</option>
+              <option value="PRP-1004 - Metro Plaza Commercial Portfolio">PRP-1004 - Metro Plaza Commercial Portfolio</option>
+              <option value="PRP-2008 - Vanguard Industrial Park">PRP-2008 - Vanguard Industrial Park</option>
             </select>
           </div>
 
@@ -128,7 +128,7 @@ export default function LauncherDemo({ onRunSimulation }) {
         )}
       </div>
 
-      {/* Account Balances Table (Matching Screenshot Image 1) */}
+      {/* Account Balances Table */}
       <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
           <div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { ShieldCheck, Play, Monitor, FileText, CheckCircle2, Moon, Sun, Layers } from 'lucide-react';
+import { ShieldCheck, Monitor, FileText, CheckCircle2, Moon, Sun, Layers } from 'lucide-react';
 
-export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode, onRunSimulation }) {
+export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode }) {
   return (
     <header className="glass-panel" style={{ borderRadius: '0 0 16px 16px', borderTop: 'none', padding: '16px 28px', marginBottom: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-        
+
         {/* Logo & Brand */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <div style={{
@@ -26,11 +26,11 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode,
                 Yardi <span className="gradient-text">Auto Bank Recon</span>
               </h1>
               <span className="badge badge-success">
-                <CheckCircle2 size={12} /> PROOF OF CONCEPT
+                <CheckCircle2 size={12} /> ENTERPRISE DEMO
               </span>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
-              Client Solution Demo & Working Production Screenshots
+              Client Solution Demo & Solution Architecture
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode,
           >
             <FileText size={16} /> Pitch & Overview
           </button>
-          
+
           <button
             onClick={() => setActiveTab('launcher')}
             className={`btn ${activeTab === 'launcher' ? 'btn-primary' : 'btn-secondary'}`}
@@ -76,14 +76,6 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode,
           >
             SFTP File Logs
           </button>
-
-          <button
-            onClick={() => setActiveTab('screenshots')}
-            className={`btn ${activeTab === 'screenshots' ? 'btn-primary' : 'btn-secondary'}`}
-            style={{ padding: '8px 14px', fontSize: '0.825rem', borderColor: 'var(--accent-amber)' }}
-          >
-            Working Screenshots
-          </button>
         </nav>
 
         {/* Action Controls */}
@@ -95,14 +87,6 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode,
             style={{ padding: '10px' }}
           >
             {darkMode ? <Sun size={18} color="#fbbf24" /> : <Moon size={18} color="#6366f1" />}
-          </button>
-
-          <button
-            onClick={onRunSimulation}
-            className="btn btn-primary"
-            style={{ padding: '10px 16px' }}
-          >
-            <Play size={16} fill="currentColor" /> Simulate Auto-Clearing
           </button>
         </div>
 

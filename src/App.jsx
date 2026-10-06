@@ -5,13 +5,10 @@ import LauncherDemo from './components/LauncherDemo';
 import MatchingRateDemo from './components/MatchingRateDemo';
 import TransactionListDemo from './components/TransactionListDemo';
 import FileLogsDemo from './components/FileLogsDemo';
-import ScreenshotsViewer from './components/ScreenshotsViewer';
-import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('presentation');
   const [darkMode, setDarkMode] = useState(true);
-  const [simulationToast, setSimulationToast] = useState(null);
 
   useEffect(() => {
     if (!darkMode) {
@@ -20,16 +17,6 @@ export default function App() {
       document.body.classList.remove('light-mode');
     }
   }, [darkMode]);
-
-  const runGlobalSimulation = () => {
-    setSimulationToast("Simulating scheduled BAI2 SFTP download & auto-clearing execution...");
-    setTimeout(() => {
-      setSimulationToast("Processed 12 bank feeds! 467 items cleared with 88.61% matching rate.");
-    }, 1500);
-    setTimeout(() => {
-      setSimulationToast(null);
-    }, 4500);
-  };
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -42,31 +29,7 @@ export default function App() {
           setActiveTab={setActiveTab}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
-          onRunSimulation={runGlobalSimulation}
         />
-
-        {/* Global Toast */}
-        {simulationToast && (
-          <div style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            zIndex: 9999,
-            background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
-            color: '#ffffff',
-            padding: '14px 20px',
-            borderRadius: '12px',
-            boxShadow: '0 10px 30px rgba(6, 182, 212, 0.4)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            fontWeight: 600,
-            fontSize: '0.9rem',
-            animation: 'fadeIn 0.3s ease'
-          }}>
-            <Sparkles size={18} /> {simulationToast}
-          </div>
-        )}
 
         {/* Active Tab View */}
         <main style={{ flex: 1 }}>
@@ -75,7 +38,7 @@ export default function App() {
           )}
 
           {activeTab === 'launcher' && (
-            <LauncherDemo onRunSimulation={runGlobalSimulation} />
+            <LauncherDemo />
           )}
 
           {activeTab === 'matching' && (
@@ -88,10 +51,6 @@ export default function App() {
 
           {activeTab === 'filelogs' && (
             <FileLogsDemo />
-          )}
-
-          {activeTab === 'screenshots' && (
-            <ScreenshotsViewer />
           )}
         </main>
 
@@ -109,11 +68,11 @@ export default function App() {
           gap: '12px'
         }}>
           <div>
-            Yardi Voyager Auto Bank Reconciliation Module &copy; 2026 | Technical Reference & Client Solution Demo
+            Yardi Voyager Auto Bank Reconciliation Module &copy; 2026 | Technical Reference & Solution Demo
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
             <span>BAI2 / CAMT53 / MT940 Compliant</span>
-            <span>Fenix Group & Yardi Integration</span>
+            <span>Yardi Voyager Integration</span>
           </div>
         </footer>
 

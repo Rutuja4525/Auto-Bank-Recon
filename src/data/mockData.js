@@ -2,328 +2,240 @@ export const solutionOverview = {
   title: "Yardi Automated Bank Reconciliation",
   subtitle: "End-to-End BAI2 / CAMT53 Intake, High-Speed Matching & Yardi Voyager Clearing Automation",
   version: "v4.2 - Production Enterprise Grade",
-  vendor: "Fenix Consulting & Yardi Technical Integration",
-  description: "Automates daily bank file retrieval (BAI2/MT940/CAMT53), normalizes statements across 12+ major financial institutions, executes configurable multi-level matching algorithms in Yardi Voyager, auto-clears ledger transactions, and posts automated interest/fee journal entries.",
+  vendor: "Yardi Technical Integration Partner",
+  description: "Automates daily bank file retrieval (BAI2/MT940/CAMT53), normalizes statements across commercial financial institutions, executes configurable multi-level matching algorithms in Yardi Voyager, auto-clears ledger transactions, and posts automated interest/fee journal entries.",
   keyMetrics: {
-    matchingRate: 88.61,
-    matchedCount: 467,
-    unmatchedCount: 60,
-    totalProcessed: 527,
-    banksSupported: "12+ Major Banks",
+    matchingRate: 91.45,
+    matchedCount: 514,
+    unmatchedCount: 48,
+    totalProcessed: 562,
+    banksSupported: "Multi-Bank Ready",
     cadence: "Daily Automated SFTP Intake"
   }
 };
 
 export const bankAccountsData = [
   {
-    code: "Citizens",
-    accountName: "Citizens Fund III",
-    acctNumber: "24969664",
+    code: "JPMC-OP",
+    accountName: "JPMorgan Chase Operating",
+    acctNumber: "XXXX-4821",
     currency: "USD",
-    glAccount: "11001250",
-    glDescription: "Cash - Money Market",
-    bankBalance: 421647.61,
+    glAccount: "1010-00",
+    glDescription: "Cash - Primary Operating",
+    bankBalance: 1245680.50,
     status: "Reconciled",
-    property: "fivf31p - Faropoint Indus Value Fund III"
+    property: "PRP-1004 - Metro Plaza Commercial Portfolio"
   },
   {
-    code: "f3jpmzba",
-    accountName: "JPM ZBA - Fund 111",
-    acctNumber: "851380599",
+    code: "WF-MM",
+    accountName: "Wells Fargo Money Market",
+    acctNumber: "XXXX-7712",
     currency: "USD",
-    glAccount: "11001850",
-    glDescription: "Cash - Fund Level JPM",
-    bankBalance: 309873.53,
+    glAccount: "1020-00",
+    glDescription: "Cash - Treasury Money Market",
+    bankBalance: 850310.25,
     status: "Reconciled",
-    property: "fivf31p - Faropoint Indus Value Fund III"
+    property: "PRP-1004 - Metro Plaza Commercial Portfolio"
   },
   {
-    code: "f3keyzba",
-    accountName: "KeyBank ZBA Fund 111",
-    acctNumber: "359681705372",
+    code: "KEY-ZBA",
+    accountName: "KeyBank Payroll ZBA Account",
+    acctNumber: "XXXX-3309",
     currency: "USD",
-    glAccount: "11001860",
-    glDescription: "Cash - KeyBank ZBA",
-    bankBalance: 609435.31,
+    glAccount: "1030-00",
+    glDescription: "Cash - Payroll ZBA Account",
+    bankBalance: 412090.00,
     status: "Reconciled",
-    property: "fivf31p - Faropoint Indus Value Fund III"
+    property: "PRP-1004 - Metro Plaza Commercial Portfolio"
   },
   {
-    code: "fivf31p",
-    accountName: "Faropoint Indus Value Fund III",
-    acctNumber: "359681663720",
+    code: "CITI-LBX",
+    accountName: "Citizens Commercial Lockbox",
+    acctNumber: "XXXX-6621",
     currency: "USD",
-    glAccount: "11001350",
-    glDescription: "Cash - Fund/Feeder Level Operating (Equity)",
-    bankBalance: 703812.88,
+    glAccount: "1040-00",
+    glDescription: "Cash - Tenant Lockbox Operating",
+    bankBalance: 920450.75,
     status: "Reconciled",
-    property: "fivf31p - Faropoint Indus Value Fund III"
+    property: "PRP-1004 - Metro Plaza Commercial Portfolio"
   }
 ];
 
 export const matchingRateReport = {
   dateFrom: "09/01/2026",
   dateTo: "09/30/2026",
-  property: "fivf31p - Faropoint Indus Value Fund III",
-  overallRate: 88.61,
-  totalMatched: 467,
-  totalUnmatched: 60,
+  property: "PRP-1004 - Metro Plaza Commercial Portfolio",
+  overallRate: 91.45,
+  totalMatched: 514,
+  totalUnmatched: 48,
   rows: [
-    { flowCode: 195, description: "Incoming Money Transfer", unmatched: 8, matched: 11, rate: 57.89 },
-    { flowCode: 229, description: "Miscellaneous International Credit", unmatched: 0, matched: 3, rate: 100.00 },
-    { flowCode: 275, description: "ZBA Credit", unmatched: 0, matched: 134, rate: 100.00 },
-    { flowCode: 351, description: "Individual Investment Sold", unmatched: 2, matched: 7, rate: 77.78 },
-    { flowCode: 455, description: "Preauthorized ACH Debit", unmatched: 2, matched: 1, rate: 33.33 },
-    { flowCode: 475, description: "Check Paid", unmatched: 0, matched: 1, rate: 100.00 },
-    { flowCode: 481, description: "Individual Loan Payment", unmatched: 0, matched: 3, rate: 100.00 },
-    { flowCode: 495, description: "Outgoing Money Transfer", unmatched: 0, matched: 18, rate: 100.00 },
-    { flowCode: 508, description: "Individual Int'l Money Transfer Debits", unmatched: 1, matched: 0, rate: 0.00 },
-    { flowCode: 529, description: "Miscellaneous International Debit", unmatched: 0, matched: 151, rate: 100.00 },
-    { flowCode: 575, description: "ZBA Debit", unmatched: 40, matched: 127, rate: 76.05 },
-    { flowCode: 577, description: "ZBA Debit Transfer", unmatched: 7, matched: 5, rate: 41.67 },
-    { flowCode: 651, description: "Individual Investment Purchased", unmatched: 0, matched: 1, rate: 100.00 },
-    { flowCode: 661, description: "Account Analysis Fee", unmatched: 0, matched: 2, rate: 100.00 },
-    { flowCode: 698, description: "Miscellaneous Fees", unmatched: 0, matched: 2, rate: 100.00 },
-    { flowCode: 760, description: "Loan Disbursement", unmatched: 0, matched: 1, rate: 100.00 }
+    { flowCode: 195, description: "Incoming Wire Transfer", unmatched: 3, matched: 24, rate: 88.89 },
+    { flowCode: 229, description: "Miscellaneous Credit Interest", unmatched: 0, matched: 8, rate: 100.00 },
+    { flowCode: 275, description: "ZBA Lockbox Deposit Credit", unmatched: 0, matched: 182, rate: 100.00 },
+    { flowCode: 351, description: "Investment Distribution Sale", unmatched: 1, matched: 12, rate: 92.31 },
+    { flowCode: 455, description: "Preauthorized Tenant ACH Debit", unmatched: 12, matched: 145, rate: 92.36 },
+    { flowCode: 475, description: "Vendor Check Paid", unmatched: 2, matched: 38, rate: 95.00 },
+    { flowCode: 481, description: "Loan Principal & Interest Payment", unmatched: 0, matched: 6, rate: 100.00 },
+    { flowCode: 495, description: "Outgoing Wire Transfer", unmatched: 0, matched: 28, rate: 100.00 },
+    { flowCode: 529, description: "Miscellaneous Bank Fee Debit", unmatched: 0, matched: 42, rate: 100.00 },
+    { flowCode: 575, description: "ZBA Cash Transfer Clearing Debit", unmatched: 28, matched: 24, rate: 46.15 },
+    { flowCode: 661, description: "Account Analysis Service Charge", unmatched: 0, matched: 3, rate: 100.00 },
+    { flowCode: 698, description: "Miscellaneous Account Fees", unmatched: 0, matched: 2, rate: 100.00 }
   ]
 };
 
 export const transactionsData = [
   {
-    id: "1112196",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
+    id: "TXN-2004101",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
     date: "09/01/2026",
     flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 46918.45,
+    type: "ACH Tenant Rent Collection",
+    amount: 124500.00,
     typeClass: "CR",
-    bankRef: "A26243025177420",
-    custRef: "2452",
-    cleared: false,
-    remarks: "05=CUST REF=2452 ORIG CO NAME=SOLSTICE SLEEP ORIG CO ID=9718801005 CO ENTRY DESC=CORP PAY TRACE NO=04100"
+    bankRef: "ACH20260901-001",
+    custRef: "TEN-8841",
+    cleared: true,
+    remarks: "05=TENANT RENT PAYMENT Apex Retail Corp LEASE-9041 SUITE-100"
   },
   {
-    id: "1112211",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
+    id: "TXN-2004102",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
     date: "09/01/2026",
     flowCode: 501,
-    type: "Automatic Transfer Debit",
-    amount: 46918.45,
+    type: "Automatic Sweep Debit",
+    amount: 124500.00,
     typeClass: "DB",
-    bankRef: "A26246007669508",
-    custRef: "00002800860542",
+    bankRef: "SWP20260901-002",
+    custRef: "SWEEP-OP-01",
+    cleared: true,
+    remarks: "05=AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
+  },
+  {
+    id: "TXN-2004103",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/02/2026",
+    flowCode: 145,
+    type: "ACH Tenant Rent Collection",
+    amount: 86320.50,
+    typeClass: "CR",
+    bankRef: "ACH20260902-005",
+    custRef: "TEN-7712",
+    cleared: true,
+    remarks: "05=TENANT RENT PAYMENT Horizon Global Tech SUITE-400"
+  },
+  {
+    id: "TXN-2004104",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/03/2026",
+    flowCode: 145,
+    type: "ACH Maintenance Fee",
+    amount: 14850.00,
+    typeClass: "CR",
+    bankRef: "ACH20260903-012",
+    custRef: "TEN-6601",
+    cleared: true,
+    remarks: "05=CAM RECONCILIATION PAYMENT Beacon Health Systems"
+  },
+  {
+    id: "TXN-2004105",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/03/2026",
+    flowCode: 145,
+    type: "ACH Unidentified Credit",
+    amount: 38400.00,
+    typeClass: "CR",
+    bankRef: "ACH20260903-099",
+    custRef: "PENDING-REF",
     cleared: false,
-    remarks: "05=TRANSFER TO 7057548724, Funds Type-Z LP LOCKBOX"
+    remarks: "05=WIRE TRANSFER PENDING REMITTANCE MATCHING REVIEW"
   },
   {
-    id: "1123865",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 552169.95,
-    typeClass: "CR",
-    bankRef: "A2624600766950f",
-    custRef: "000027936333702",
+    id: "TXN-2004106",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/04/2026",
+    flowCode: 455,
+    type: "Vendor ACH Payment",
+    amount: 52190.25,
+    typeClass: "DB",
+    bankRef: "ACH20260904-033",
+    custRef: "VND-4401",
     cleared: true,
-    remarks: "05=CUST REF=000027936333702 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709 CO ENTRY DESC=SettlementT"
+    remarks: "05=VENDOR PAYMENT Metro Utility Corp INV-88219"
   },
   {
-    id: "1123881",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
+    id: "TXN-2004107",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/05/2026",
     flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 191811.87,
+    type: "ACH Tenant Rent Collection",
+    amount: 64200.00,
     typeClass: "CR",
-    bankRef: "A262460076695071",
-    custRef: "000028008450582",
+    bankRef: "ACH20260905-044",
+    custRef: "TEN-5510",
     cleared: true,
-    remarks: "05=CUST REF=000028008450582 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709 CO ENTRY DESC=SettlementT"
+    remarks: "05=TENANT RENT PAYMENT Vanguard Logistics DOCK-12"
   },
   {
-    id: "1123897",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
+    id: "TXN-2004108",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/05/2026",
+    flowCode: 501,
+    type: "Automatic Sweep Debit",
+    amount: 64200.00,
+    typeClass: "DB",
+    bankRef: "SWP20260905-045",
+    custRef: "SWEEP-OP-01",
+    cleared: true,
+    remarks: "05=AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
+  },
+  {
+    id: "TXN-2004109",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/08/2026",
     flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 191347.84,
+    type: "ACH Security Deposit",
+    amount: 25000.00,
     typeClass: "CR",
-    bankRef: "A26247001",
-    custRef: "-",
+    bankRef: "ACH20260908-011",
+    custRef: "TEN-9902",
     cleared: false,
-    remarks: "05=TRANSFER TO 7057548724, Funds Type-Z LP LOCKBOX"
+    remarks: "05=NEW TENANT SECURITY DEPOSIT Summit Tech Labs"
   },
   {
-    id: "1123913",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 61807.35,
-    typeClass: "CR",
-    bankRef: "A262510164194291",
-    custRef: "0000280550055421",
+    id: "TXN-2004110",
+    bankCode: "CITI-LBX",
+    bankAcctName: "Citizens Commercial Lockbox",
+    date: "09/09/2026",
+    flowCode: 698,
+    type: "Bank Service Charge",
+    amount: 450.00,
+    typeClass: "DB",
+    bankRef: "FEE20260909-001",
+    custRef: "BANK-FEE",
     cleared: true,
-    remarks: "05=CUST REF=0000280550055420 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709"
-  },
-  {
-    id: "1123929",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 53648.65,
-    typeClass: "CR",
-    bankRef: "A262510079302791",
-    custRef: "000028037316602",
-    cleared: true,
-    remarks: "05=CUST REF=0000280373166020 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709"
-  },
-  {
-    id: "1123945",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 44567.98,
-    typeClass: "CR",
-    bankRef: "A26257006866396",
-    custRef: "000028092101158",
-    cleared: true,
-    remarks: "05=CUST REF=0000280921011580 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709"
-  },
-  {
-    id: "1123961",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 42496.81,
-    typeClass: "CR",
-    bankRef: "A26258001458972",
-    custRef: "000028106572266",
-    cleared: true,
-    remarks: "05=CUST REF=0000281065722660 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709"
-  },
-  {
-    id: "1123977",
-    bankCode: "f2c08727",
-    bankAcctName: "KUSH-KUSH, LP LOCKBOX",
-    date: "09/03/2026",
-    flowCode: 145,
-    type: "ACH Concentration Credit",
-    amount: 21101.06,
-    typeClass: "CR",
-    bankRef: "A26266002662896",
-    custRef: "000028162205498",
-    cleared: true,
-    remarks: "05=CUST REF=0000281622054980 ORIG CO NAME=FAROP01NT-F2C087 ORIG CO ID=9000326709"
+    remarks: "05=MONTHLY ACCOUNT ANALYSIS FEE AUTOMATED GL BOOKING"
   }
 ];
 
 export const fileLogsData = [
-  { id: "LOG-0901-01", bank: "Truist Bank", fileName: "SFTPbaist 950FAROP01NT.TRUIST PD P.S20260901110006", records: 124, date: "09/01/2026 11:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-02", bank: "Capital One", fileName: "SFTPbaist 205FAROP01NT.CAPITALONE PD.S20260901080007", records: 57, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-03", bank: "Pinnacle Bank", fileName: "SFTPbaist 509FAROP01NT.PINNACLE PD.S20260901090005", records: 100, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-04", bank: "Western Alliance (WAB)", fileName: "SFTPbaist 835FAROP01NT.WAB PD.S20260901100014", records: 23, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-05", bank: "JPMorgan Chase", fileName: "SFTPbaist 916FAROP01NT.JPMC PD.S20260901084040", records: 686, date: "09/01/2026 08:40 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-06", bank: "Synovus Bank", fileName: "SFTPbaist 921FAROP01NT.SYNOVUS PD.S20260901072008", records: 18, date: "09/01/2026 07:20 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-07", bank: "Citizens Bank", fileName: "SFTPbaist 938FAROP01NT.CITIZENS PD.S20260901110004", records: 840, date: "09/01/2026 11:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-08", bank: "KeyBank", fileName: "SFTPbaist 625FAROP01NT.KEYBANK PD P.S20260901093006", records: 2961, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-09", bank: "Bank of Hawaii (BH1)", fileName: "SFTPbaist 716FAROP01NT.BH1 PD.S20260901095109", records: 11, date: "09/01/2026 09:51 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-10", bank: "PNC Bank", fileName: "SFTPbaist 313FAROP01NT.PNC PD.S20260901101036", records: 23, date: "09/01/2026 10:10 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0903-01", bank: "Renasant Bank", fileName: "SFTPbaist 680FAROP01NT.RENASANT PD.S20260903112152", records: 1129, date: "09/03/2026 11:21 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0904-01", bank: "US Bank", fileName: "SFTPbaist 655FAROP01NT.USBANK PD P.S20260904105015", records: 820, date: "09/04/2026 10:50 AM", status: "Success", errorCount: 0 }
-];
-
-export const screenshotsGallery = [
-  {
-    id: 1,
-    title: "Bank Reconciliation Launcher Screen (brecs)",
-    file: "/screenshots/image1.png",
-    description: "New multi-bank Yardi launcher page showing property Selection, bank accounts, GL cash accounts, and live bank balances auto-populated.",
-    keyPoints: [
-      "Auto-populates statement balances from BAI2 feeds",
-      "One-click multi-bank report generation & email triggers",
-      "Direct integration with Yardi Voyager General Ledger"
-    ]
-  },
-  {
-    id: 2,
-    title: "Bank Reconciliation Matching Rate Report (brec_mrr)",
-    file: "/screenshots/image2.png",
-    description: "Executive matching analytics broken down by BAI2 Flow Code (195 to 760), displaying matched vs unmatched counts and matching percentages.",
-    keyPoints: [
-      "Achieved 88.61% overall automatic matching rate across 527 transactions",
-      "100.00% matching on ZBA Credits, Outgoing Wires, & International Debits",
-      "Drill-down exception tracking for unmatched items"
-    ]
-  },
-  {
-    id: 3,
-    title: "List Bank Transactions Filter Interface (ShowBAI2Txns)",
-    file: "/screenshots/image3.png",
-    description: "Yardi query filter screen allowing accounting users to inspect cleared and uncleared transactions by bank code, property, and date range.",
-    keyPoints: [
-      "Filter by specific Lockbox or Operating bank codes (e.g. f2c08727)",
-      "Supports cleared vs uncleared transaction view toggles",
-      "Custom SQL script versioning (rs_sql_cc ShowBA12Txns.txt)"
-    ]
-  },
-  {
-    id: 4,
-    title: "Imported Bank Transactions & Clearing Grid",
-    file: "/screenshots/image4.png",
-    description: "Detailed transaction ledger displaying imported ACH Concentration Credits and Automatic Transfer Debits with bank reference IDs and Yardi clearing flags.",
-    keyPoints: [
-      "Full transparency on BAI2 bank references (e.g., A26243025177420)",
-      "Automatic clearing indicator ('Y' flag) when matching criteria are met",
-      "Complete customer reference and remittance text parsing"
-    ]
-  },
-  {
-    id: 5,
-    title: "BAI2 Files Intake Log Filter (BA12FilesLog)",
-    file: "/screenshots/image5.png",
-    description: "Monitoring utility parameter screen to review daily automated SFTP file downloads and intake status across connected banking institutions.",
-    keyPoints: [
-      "Tracks scheduled SFTP downloads from banks and Kyriba",
-      "Version controlled integration script (rs_sql_fnx BA12FilesLog.txt)",
-      "Supports single date or date range audit queries"
-    ]
-  },
-  {
-    id: 6,
-    title: "Multi-Bank BAI2 File Download & Execution Audit Log",
-    file: "/screenshots/image6.png",
-    description: "Comprehensive daily file intake log covering 12+ major financial institutions (Truist, Capital One, Pinnacle, JPMC, KeyBank, US Bank, etc.).",
-    keyPoints: [
-      "Automated timestamp logging for each SFTP bank feed",
-      "Record count metrics and intake volume tracking",
-      "Disruption alerting if expected daily bank files are delayed"
-    ]
-  },
-  {
-    id: 7,
-    title: "Bank Balances with GL Account Reconciliation Report",
-    file: "/screenshots/image7.png",
-    description: "Final variance check utility matching imported statement closing balances directly against Yardi GL Cash Account balances as of date.",
-    keyPoints: [
-      "Automated balance comparison eliminating manual GL lookups",
-      "Supports property and entity level consolidations",
-      "Fenix Group SQL utility (rs_sql bank balancesGL3A12.txt)"
-    ]
-  }
+  { id: "LOG-0901-01", bank: "JPMorgan Chase", fileName: "SFTP_JPMC_BAI2_20260901_0800.TRU", records: 240, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-02", bank: "Wells Fargo", fileName: "SFTP_WF_BAI2_20260901_0830.TRU", records: 115, date: "09/01/2026 08:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-03", bank: "KeyBank", fileName: "SFTP_KEY_BAI2_20260901_0900.TRU", records: 88, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-04", bank: "Citizens Commercial", fileName: "SFTP_CITI_BAI2_20260901_0930.TRU", records: 320, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-05", bank: "Bank of America", fileName: "SFTP_BOA_BAI2_20260901_1000.TRU", records: 194, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-06", bank: "PNC Bank", fileName: "SFTP_PNC_BAI2_20260901_1030.TRU", records: 76, date: "09/01/2026 10:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-01", bank: "US Bank", fileName: "SFTP_USB_BAI2_20260902_0800.TRU", records: 142, date: "09/02/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-02", bank: "Capital One", fileName: "SFTP_CAP1_BAI2_20260902_0830.TRU", records: 64, date: "09/02/2026 08:30 AM", status: "Success", errorCount: 0 }
 ];
 
 export const implementationRoadmap = [
