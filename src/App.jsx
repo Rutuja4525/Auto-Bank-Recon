@@ -68,10 +68,9 @@ export default function App() {
           gap: '12px'
         }}>
           <div>
-            Yardi Voyager Auto Bank Reconciliation Module &copy; 2026 | Technical Reference & Solution Demo
+            Yardi Voyager Auto Bank Reconciliation Module &copy; 2026 | Finance Solution Demo
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
-            <span>BAI2 / CAMT53 / MT940 Compliant</span>
             <span>Yardi Voyager Integration</span>
           </div>
         </footer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Monitor, FileText, CheckCircle2, Moon, Sun, Layers } from 'lucide-react';
+import { ShieldCheck, Monitor, FileText, CheckCircle2, Moon, Sun, Layers, Database } from 'lucide-react';
 
 export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode }) {
   return (
@@ -26,7 +26,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
                 Yardi <span className="gradient-text">Auto Bank Recon</span>
               </h1>
               <span className="badge badge-success">
-                <CheckCircle2 size={12} /> ENTERPRISE DEMO
+                <CheckCircle2 size={12} /> FINANCE DEMO
               </span>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
@@ -42,7 +42,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
             className={`btn ${activeTab === 'presentation' ? 'btn-primary' : 'btn-secondary'}`}
             style={{ padding: '8px 14px', fontSize: '0.825rem' }}
           >
-            <FileText size={16} /> Pitch & Overview
+            <FileText size={16} /> Executive Summary & ROI
           </button>
 
           <button
@@ -50,7 +50,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
             className={`btn ${activeTab === 'launcher' ? 'btn-primary' : 'btn-secondary'}`}
             style={{ padding: '8px 14px', fontSize: '0.825rem' }}
           >
-            <Monitor size={16} /> Interactive Launcher
+            <Monitor size={16} /> Rec Launcher
           </button>
 
           <button
@@ -74,7 +74,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
             className={`btn ${activeTab === 'filelogs' ? 'btn-primary' : 'btn-secondary'}`}
             style={{ padding: '8px 14px', fontSize: '0.825rem' }}
           >
-            SFTP File Logs
+            <Database size={16} /> Bank Feed Logs
           </button>
         </nav>
 

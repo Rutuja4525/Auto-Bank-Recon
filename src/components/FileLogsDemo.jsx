@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { fileLogsData } from '../data/mockData';
-import { Server, CheckCircle2, RefreshCw, FileCode, ShieldCheck, HardDrive } from 'lucide-react';
+import { Server, CheckCircle2 } from 'lucide-react';
 
 export default function FileLogsDemo() {
   const [logs, setLogs] = useState(fileLogsData);
@@ -21,17 +21,17 @@ export default function FileLogsDemo() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>BAI2 SFTP File Intake Audit Log</h2>
-              <span className="badge badge-info">Screen Code: BA12FilesLog</span>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Bank Feed Statement Ingestion Audit Log</h2>
+              <span className="badge badge-info">Ingestion Audit</span>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Automated intake monitoring across 12 connected bank SFTP endpoints.
+              Automated electronic statement feed monitoring across 12 connected commercial bank partners.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>
             <span className="badge badge-success" style={{ padding: '8px 14px' }}>
-              <Server size={14} /> All 12 SFTP Feeds Active
+              <Server size={14} /> 12 Connected Bank Feeds Active
             </span>
           </div>
         </div>
@@ -40,28 +40,28 @@ export default function FileLogsDemo() {
       {/* Summary KPI Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Active Feeds</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Active Bank Feeds</div>
           <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: 'var(--accent-cyan)' }}>12 Banks</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>JPMC, KeyBank, Truist, etc.</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>JPMC, Citi, Wells Fargo, etc.</div>
         </div>
 
         <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Line Records</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Statement Lines Processed</div>
           <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: 'var(--accent-emerald)' }}>{totalRecords.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Parsed & Loaded into Yardi</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Parsed & matched into Yardi Voyager</div>
         </div>
 
         <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Failed Files</div>
-          <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: '#34d399' }}>0</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>100% Intake Reliability</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Data Intake Failures</div>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: 'var(--accent-emerald)' }}>0</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>100% Ingestion Reliability</div>
         </div>
       </div>
 
       {/* File Log Table */}
       <div className="glass-card" style={{ padding: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>SFTP File Execution History</h3>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Electronic Bank Feed Intake History</h3>
           <div>
             <select
               value={selectedBank}
@@ -69,17 +69,17 @@ export default function FileLogsDemo() {
               style={{
                 padding: '8px 12px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--border-color)',
-                color: '#ffffff',
+                color: 'var(--input-color)',
                 fontSize: '0.85rem'
               }}
             >
-              <option value="all">All Banking Institutions</option>
+              <option value="all">All Financial Institutions</option>
               <option value="JPMorgan">JPMorgan Chase</option>
               <option value="KeyBank">KeyBank</option>
               <option value="Truist">Truist Bank</option>
-              <option value="Pinnacle">Pinnacle Bank</option>
+              <option value="Citizens">Citizens Commercial</option>
             </select>
           </div>
         </div>
@@ -89,11 +89,11 @@ export default function FileLogsDemo() {
             <thead>
               <tr>
                 <th>Log ID</th>
-                <th>Financial Institution</th>
-                <th>SFTP BAI2 File Name</th>
-                <th style={{ textAlign: 'center' }}>Record Count</th>
-                <th>Download Timestamp</th>
-                <th>Status</th>
+                <th>Banking Partner</th>
+                <th>Statement Feed File Name</th>
+                <th style={{ textAlign: 'center' }}>Line Count</th>
+                <th>Intake Timestamp</th>
+                <th>Audit Status</th>
               </tr>
             </thead>
             <tbody>

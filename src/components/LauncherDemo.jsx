@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
 import { bankAccountsData } from '../data/mockData';
-import { Play, CheckCircle2, RefreshCw, FileText, Send, Eye, HelpCircle } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function LauncherDemo() {
   const [selectedProperty, setSelectedProperty] = useState("PRP-1004 - Metro Plaza Commercial Portfolio");
   const [cutoffDate, setCutoffDate] = useState("2026-09-30");
   const [accounts, setAccounts] = useState(bankAccountsData);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [lastAction, setLastAction] = useState(null);
-
-  const handleGenerate = () => {
-    setIsProcessing(true);
-    setLastAction("Generating bank reconciliation package for " + selectedProperty);
-    setTimeout(() => {
-      setIsProcessing(false);
-    }, 1200);
-  };
 
   const formatCurrency = (val) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
@@ -32,17 +22,11 @@ export default function LauncherDemo() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Bank Reconciliation Launcher</h2>
-              <span className="badge badge-purple">Screen Code: brecs</span>
+              <span className="badge badge-purple">Yardi Voyager Control</span>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Multi-bank launcher module auto-populating statement balances directly from BAI2 bank feeds.
+              Multi-bank launcher module auto-populating statement balances directly from electronic bank feeds into Yardi.
             </p>
-          </div>
-
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button onClick={handleGenerate} className="btn btn-primary" disabled={isProcessing}>
-              {isProcessing ? <RefreshCw size={16} className="pulse-glow" /> : <Play size={16} />} Generate Recs
-            </button>
           </div>
         </div>
       </div>
@@ -50,13 +34,13 @@ export default function LauncherDemo() {
       {/* Launcher Parameters (Yardi Control Panel Style) */}
       <div className="glass-card" style={{ padding: '20px', marginBottom: '24px' }}>
         <h4 style={{ fontSize: '0.875rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.05em' }}>
-          Filter Parameters (Yardi Voyager Module)
+          Reconciliation Parameters (Yardi Voyager Module)
         </h4>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
           <div>
             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              Property / Entity
+              Property / Portfolio Entity
             </label>
             <select
               value={selectedProperty}
@@ -65,9 +49,9 @@ export default function LauncherDemo() {
                 width: '100%',
                 padding: '10px 14px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--border-color)',
-                color: '#ffffff',
+                color: 'var(--input-color)',
                 fontSize: '0.875rem',
                 fontFamily: 'inherit'
               }}
@@ -79,7 +63,7 @@ export default function LauncherDemo() {
 
           <div>
             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              GL Cutoff Date
+              Reconciliation Cutoff Date
             </label>
             <input
               type="date"
@@ -89,9 +73,9 @@ export default function LauncherDemo() {
                 width: '100%',
                 padding: '10px 14px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--border-color)',
-                color: '#ffffff',
+                color: 'var(--input-color)',
                 fontSize: '0.875rem',
                 fontFamily: 'inherit'
               }}
@@ -100,40 +84,34 @@ export default function LauncherDemo() {
 
           <div>
             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              Output Type
+              Report Output Format
             </label>
             <select
               style={{
                 width: '100%',
                 padding: '10px 14px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--border-color)',
-                color: '#ffffff',
+                color: 'var(--input-color)',
                 fontSize: '0.875rem',
                 fontFamily: 'inherit'
               }}
             >
-              <option>Screen (Interactive Grid)</option>
-              <option>PDF Report Package</option>
-              <option>Excel Summary (.xlsx)</option>
+              <option>Interactive Screen Grid</option>
+              <option>PDF Reconciliation Package</option>
+              <option>Excel Executive Summary (.xlsx)</option>
             </select>
           </div>
         </div>
-
-        {lastAction && (
-          <div className="badge badge-info" style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <CheckCircle2 size={14} /> {lastAction}
-          </div>
-        )}
       </div>
 
       {/* Account Balances Table */}
       <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Associated Bank Accounts & Auto-Populated Balances</h3>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Balances retrieved daily via BAI2 electronic feeds</p>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Connected Bank Accounts & Auto-Populated Balances</h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Balances retrieved daily via electronic statement feeds</p>
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Bank Balance</div>
@@ -149,10 +127,10 @@ export default function LauncherDemo() {
                 <th>Account Name</th>
                 <th>Acct Number</th>
                 <th>Currency</th>
-                <th>GL Account</th>
+                <th>Yardi GL Account</th>
                 <th>GL Description</th>
                 <th style={{ textAlign: 'right' }}>Bank Balance (USD)</th>
-                <th>Status</th>
+                <th>Reconciled Status</th>
               </tr>
             </thead>
             <tbody>
@@ -178,16 +156,6 @@ export default function LauncherDemo() {
               ))}
             </tbody>
           </table>
-        </div>
-
-        {/* Yardi Form Buttons */}
-        <div style={{ display: 'flex', gap: '10px', marginTop: '20px', flexWrap: 'wrap' }}>
-          <button className="btn btn-primary" onClick={handleGenerate}><Play size={14} /> Generate</button>
-          <button className="btn btn-secondary" onClick={() => setLastAction("Screen reset to default")}><RefreshCw size={14} /> Clear</button>
-          <button className="btn btn-secondary"><HelpCircle size={14} /> Help</button>
-          <button className="btn btn-secondary"><FileText size={14} /> Attach Reports</button>
-          <button className="btn btn-secondary"><Send size={14} /> Email Reports</button>
-          <button className="btn btn-secondary"><Eye size={14} /> Preview</button>
         </div>
       </div>
 

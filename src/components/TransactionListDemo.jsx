@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import { transactionsData } from '../data/mockData';
-import { Search, Filter, CheckCircle2, XCircle, Play, Sparkles } from 'lucide-react';
+import { Search, Filter, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 
 export default function TransactionListDemo() {
   const [txns, setTxns] = useState(transactionsData);
   const [filterCleared, setFilterCleared] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [clearedNotify, setClearedNotify] = useState(null);
-
-  const handleClearTransaction = (id) => {
-    setTxns(prev => prev.map(t => t.id === id ? { ...t, cleared: true } : t));
-    const target = txns.find(t => t.id === id);
-    setClearedNotify(`Transaction #${id} (${target?.type}) cleared successfully!`);
-    setTimeout(() => setClearedNotify(null), 3000);
-  };
 
   const filteredTxns = txns.filter(t => {
     const matchesSearch = t.bankRef.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -29,6 +21,9 @@ export default function TransactionListDemo() {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
   };
 
+  const clearedCount = txns.filter(t => t.cleared).length;
+  const unclearedCount = txns.filter(t => !t.cleared).length;
+
   return (
     <div className="animate-fade-in">
       
@@ -37,17 +32,23 @@ export default function TransactionListDemo() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>List Bank Transactions Ledger</h2>
-              <span className="badge badge-purple">Screen Code: ShowBAI2Txns</span>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Bank Transactions & Clearing Ledger</h2>
+              <span className="badge badge-purple">Yardi Voyager View</span>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Bank: <strong style={{ color: '#fff' }}>f2c08727 KUSH-KUSH, LP LOCKBOX</strong> | Date: 09/01/2026 - 09/30/2026
+              Bank Feed: <strong style={{ color: 'var(--text-main)', fontWeight: 700 }}>Citizens Commercial Lockbox (09/01/2026 - 09/30/2026)</strong>
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>
+            <span className="badge badge-success" style={{ padding: '8px 14px' }}>
+              {clearedCount} Cleared
+            </span>
+            <span className="badge badge-warning" style={{ padding: '8px 14px' }}>
+              {unclearedCount} Uncleared
+            </span>
             <span className="badge badge-info" style={{ padding: '8px 14px' }}>
-              Showing {filteredTxns.length} Transactions
+              Total: {filteredTxns.length} Txns
             </span>
           </div>
         </div>
@@ -66,9 +67,9 @@ export default function TransactionListDemo() {
               style={{
                 padding: '8px 12px 8px 36px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--border-color)',
-                color: '#ffffff',
+                color: 'var(--input-color)',
                 fontSize: '0.85rem',
                 minWidth: '260px'
               }}
@@ -77,22 +78,16 @@ export default function TransactionListDemo() {
 
           <div style={{ display: 'flex', gap: '6px' }}>
             <button onClick={() => setFilterCleared('all')} className={`btn ${filterCleared === 'all' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              All
-            </button>
-            <button onClick={() => setFilterCleared('uncleared')} className={`btn ${filterCleared === 'uncleared' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              Uncleared Only
+              All ({txns.length})
             </button>
             <button onClick={() => setFilterCleared('cleared')} className={`btn ${filterCleared === 'cleared' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              Cleared Only
+              Cleared ({clearedCount})
+            </button>
+            <button onClick={() => setFilterCleared('uncleared')} className={`btn ${filterCleared === 'uncleared' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
+              Uncleared ({unclearedCount})
             </button>
           </div>
         </div>
-
-        {clearedNotify && (
-          <div className="badge badge-success" style={{ animation: 'fadeIn 0.2s ease' }}>
-            <Sparkles size={14} /> {clearedNotify}
-          </div>
-        )}
       </div>
 
       {/* Main Ledger Table */}
@@ -103,14 +98,12 @@ export default function TransactionListDemo() {
               <tr>
                 <th>Txn ID</th>
                 <th>Bank Date</th>
-                <th>Flow</th>
                 <th>Transaction Type</th>
                 <th style={{ textAlign: 'right' }}>Amount</th>
                 <th>DB/CR</th>
                 <th>Bank Reference</th>
                 <th>Customer Ref</th>
-                <th>Cleared</th>
-                <th>Actions</th>
+                <th>Cleared Status</th>
               </tr>
             </thead>
             <tbody>
@@ -120,9 +113,8 @@ export default function TransactionListDemo() {
                     {t.id}
                   </td>
                   <td>{t.date}</td>
-                  <td className="font-mono" style={{ color: 'var(--text-muted)' }}>{t.flowCode}</td>
                   <td style={{ fontWeight: 600 }}>{t.type}</td>
-                  <td className="font-mono" style={{ textAlign: 'right', fontWeight: 700, color: t.typeClass === 'CR' ? '#34d399' : '#f87171' }}>
+                  <td className="font-mono" style={{ textAlign: 'right', fontWeight: 700, color: t.typeClass === 'CR' ? '#10b981' : '#f43f5e' }}>
                     {formatCurrency(t.amount)}
                   </td>
                   <td>
@@ -134,20 +126,9 @@ export default function TransactionListDemo() {
                   <td className="font-mono" style={{ fontSize: '0.8rem' }}>{t.custRef}</td>
                   <td>
                     {t.cleared ? (
-                      <span className="badge badge-success"><CheckCircle2 size={12} /> Y (Cleared)</span>
+                      <span className="badge badge-success"><CheckCircle2 size={12} /> Cleared</span>
                     ) : (
-                      <span className="badge badge-warning"><XCircle size={12} /> N (Pending)</span>
-                    )}
-                  </td>
-                  <td>
-                    {!t.cleared && (
-                      <button
-                        onClick={() => handleClearTransaction(t.id)}
-                        className="btn btn-outline"
-                        style={{ padding: '4px 10px', fontSize: '0.75rem' }}
-                      >
-                        Auto-Clear
-                      </button>
+                      <span className="badge badge-warning"><XCircle size={12} /> Uncleared</span>
                     )}
                   </td>
                 </tr>

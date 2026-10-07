@@ -1,16 +1,19 @@
 export const solutionOverview = {
   title: "Yardi Automated Bank Reconciliation",
-  subtitle: "End-to-End BAI2 / CAMT53 Intake, High-Speed Matching & Yardi Voyager Clearing Automation",
-  version: "v4.2 - Production Enterprise Grade",
-  vendor: "Yardi Technical Integration Partner",
-  description: "Automates daily bank file retrieval (BAI2/MT940/CAMT53), normalizes statements across commercial financial institutions, executes configurable multi-level matching algorithms in Yardi Voyager, auto-clears ledger transactions, and posts automated interest/fee journal entries.",
+  subtitle: "Finance Team Productivity & One-Time Investment Solution",
+  version: "Enterprise Production Grade",
+  vendor: "Yardi Integration Partner",
+  description: "Designed for Finance Leadership & Accounting Teams to automate daily bank reconciliation directly inside Yardi Voyager. Replaces manual line-by-line statement matching with automated rules, saving 85+ accounting hours monthly with a 100% one-time implementation investment.",
   keyMetrics: {
+    monthlyHoursSaved: "85+ Hours/Mo",
+    costModel: "One-Time Investment",
+    recurringSaaS: "Zero Subscription Fees",
     matchingRate: 91.45,
     matchedCount: 514,
     unmatchedCount: 48,
     totalProcessed: 562,
     banksSupported: "Multi-Bank Ready",
-    cadence: "Daily Automated SFTP Intake"
+    cadence: "Daily Automated Intake"
   }
 };
 
@@ -97,7 +100,7 @@ export const transactionsData = [
     bankRef: "ACH20260901-001",
     custRef: "TEN-8841",
     cleared: true,
-    remarks: "05=TENANT RENT PAYMENT Apex Retail Corp LEASE-9041 SUITE-100"
+    remarks: "Apex Retail Corp LEASE-9041 SUITE-100"
   },
   {
     id: "TXN-2004102",
@@ -111,7 +114,7 @@ export const transactionsData = [
     bankRef: "SWP20260901-002",
     custRef: "SWEEP-OP-01",
     cleared: true,
-    remarks: "05=AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
+    remarks: "AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
   },
   {
     id: "TXN-2004103",
@@ -124,8 +127,8 @@ export const transactionsData = [
     typeClass: "CR",
     bankRef: "ACH20260902-005",
     custRef: "TEN-7712",
-    cleared: true,
-    remarks: "05=TENANT RENT PAYMENT Horizon Global Tech SUITE-400"
+    cleared: false,
+    remarks: "Horizon Global Tech SUITE-400 (Pending Remittance Review)"
   },
   {
     id: "TXN-2004104",
@@ -139,7 +142,7 @@ export const transactionsData = [
     bankRef: "ACH20260903-012",
     custRef: "TEN-6601",
     cleared: true,
-    remarks: "05=CAM RECONCILIATION PAYMENT Beacon Health Systems"
+    remarks: "CAM RECONCILIATION PAYMENT Beacon Health Systems"
   },
   {
     id: "TXN-2004105",
@@ -153,7 +156,7 @@ export const transactionsData = [
     bankRef: "ACH20260903-099",
     custRef: "PENDING-REF",
     cleared: false,
-    remarks: "05=WIRE TRANSFER PENDING REMITTANCE MATCHING REVIEW"
+    remarks: "WIRE TRANSFER PENDING REMITTANCE MATCHING REVIEW"
   },
   {
     id: "TXN-2004106",
@@ -167,7 +170,7 @@ export const transactionsData = [
     bankRef: "ACH20260904-033",
     custRef: "VND-4401",
     cleared: true,
-    remarks: "05=VENDOR PAYMENT Metro Utility Corp INV-88219"
+    remarks: "VENDOR PAYMENT Metro Utility Corp INV-88219"
   },
   {
     id: "TXN-2004107",
@@ -180,8 +183,8 @@ export const transactionsData = [
     typeClass: "CR",
     bankRef: "ACH20260905-044",
     custRef: "TEN-5510",
-    cleared: true,
-    remarks: "05=TENANT RENT PAYMENT Vanguard Logistics DOCK-12"
+    cleared: false,
+    remarks: "Vanguard Logistics DOCK-12 (Awaiting Manual Match)"
   },
   {
     id: "TXN-2004108",
@@ -195,7 +198,7 @@ export const transactionsData = [
     bankRef: "SWP20260905-045",
     custRef: "SWEEP-OP-01",
     cleared: true,
-    remarks: "05=AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
+    remarks: "AUTOMATIC ZBA SWEEP TO CONCENTRATION ACCOUNT #4821"
   },
   {
     id: "TXN-2004109",
@@ -209,7 +212,7 @@ export const transactionsData = [
     bankRef: "ACH20260908-011",
     custRef: "TEN-9902",
     cleared: false,
-    remarks: "05=NEW TENANT SECURITY DEPOSIT Summit Tech Labs"
+    remarks: "NEW TENANT SECURITY DEPOSIT Summit Tech Labs (Pending GL Coding)"
   },
   {
     id: "TXN-2004110",
@@ -223,30 +226,23 @@ export const transactionsData = [
     bankRef: "FEE20260909-001",
     custRef: "BANK-FEE",
     cleared: true,
-    remarks: "05=MONTHLY ACCOUNT ANALYSIS FEE AUTOMATED GL BOOKING"
+    remarks: "MONTHLY ACCOUNT ANALYSIS FEE AUTOMATED GL BOOKING"
   }
 ];
 
 export const fileLogsData = [
-  { id: "LOG-0901-01", bank: "JPMorgan Chase", fileName: "SFTP_JPMC_BAI2_20260901_0800.TRU", records: 240, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-02", bank: "Wells Fargo", fileName: "SFTP_WF_BAI2_20260901_0830.TRU", records: 115, date: "09/01/2026 08:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-03", bank: "KeyBank", fileName: "SFTP_KEY_BAI2_20260901_0900.TRU", records: 88, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-04", bank: "Citizens Commercial", fileName: "SFTP_CITI_BAI2_20260901_0930.TRU", records: 320, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-05", bank: "Bank of America", fileName: "SFTP_BOA_BAI2_20260901_1000.TRU", records: 194, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-06", bank: "PNC Bank", fileName: "SFTP_PNC_BAI2_20260901_1030.TRU", records: 76, date: "09/01/2026 10:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0902-01", bank: "US Bank", fileName: "SFTP_USB_BAI2_20260902_0800.TRU", records: 142, date: "09/02/2026 08:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0902-02", bank: "Capital One", fileName: "SFTP_CAP1_BAI2_20260902_0830.TRU", records: 64, date: "09/02/2026 08:30 AM", status: "Success", errorCount: 0 }
+  { id: "LOG-0901-01", bank: "JPMorgan Chase", fileName: "SFTP_JPMC_BANKFEED_20260901.TRU", records: 240, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-02", bank: "Wells Fargo", fileName: "SFTP_WF_BANKFEED_20260901.TRU", records: 115, date: "09/01/2026 08:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-03", bank: "KeyBank", fileName: "SFTP_KEY_BANKFEED_20260901.TRU", records: 88, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-04", bank: "Citizens Commercial", fileName: "SFTP_CITI_BANKFEED_20260901.TRU", records: 320, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-05", bank: "Bank of America", fileName: "SFTP_BOA_BANKFEED_20260901.TRU", records: 194, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-06", bank: "PNC Bank", fileName: "SFTP_PNC_BANKFEED_20260901.TRU", records: 76, date: "09/01/2026 10:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-01", bank: "US Bank", fileName: "SFTP_USB_BANKFEED_20260902.TRU", records: 142, date: "09/02/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-02", bank: "Capital One", fileName: "SFTP_CAP1_BANKFEED_20260902.TRU", records: 64, date: "09/02/2026 08:30 AM", status: "Success", errorCount: 0 }
 ];
 
 export const implementationRoadmap = [
-  { step: 1, title: "Connectivity & Test Feed Setup", desc: "Confirm bank/Kyriba SFTP credentials and obtain sample BAI2/CAMT53 test files." },
-  { step: 2, title: "Package Deployment", desc: "Deploy Package Manager packages (ImportBAI task, BAI2 lookup, correspondence templates)." },
-  { step: 3, title: "Database & Group Config", desc: "Configure foreign database structures and security groups (BAI2, BAI2LOG, BAI2JE)." },
-  { step: 4, title: "File Server Setup", desc: "Create standardized directory hierarchy: \\Interfaces\\Bank\\BAI2, BAI2Logs, JE, Scripts." },
-  { step: 5, title: "Custom Report Registration", desc: "Copy report files to Yardi reports folder and grant user group launcher privileges." },
-  { step: 6, title: "Service Manager DLL Registration", desc: "Coordinate with Yardi support to deploy ASPX pages and MultipleFiles yExport DLL." },
-  { step: 7, title: "Yardi Menu Linking", desc: "Add launcher links: Bank Rec Launcher, List Transactions, Matching Rate Report, File Logs." },
-  { step: 8, title: "Script Tailoring & AppTask Registration", desc: "Customize PowerShell (.ps1) and Batch (.bat) scripts and register in AppTask DLL path." },
-  { step: 9, title: "GL Journal Rules & Testing", desc: "Define GL coding for auto-booking interest income and bank service charges." },
-  { step: 10, title: "User Acceptance & Production Go-Live", desc: "Execute end-to-end dry run, validate matching rates, and initiate daily automated cadence." }
+  { step: 1, title: "Connectivity & Test Feed Setup", desc: "Establish secure SFTP credentials and obtain sample statement test feeds (BAI2, MT940, CAMT53)." },
+  { step: 2, title: "Package Deployment", desc: "One-click deployment completed directly on our side within just 2 hours." },
+  { step: 3, title: "User Acceptance & Production Go-Live", desc: "End-to-end reconciliation validation, finance team walkthrough, and full production go-live." }
 ];
