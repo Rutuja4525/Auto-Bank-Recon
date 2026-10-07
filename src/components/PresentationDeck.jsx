@@ -79,19 +79,19 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Performance & Cost Metrics</h3>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
-                <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800 }} className="gradient-text">91.45%</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Auto-Clear Rate</div>
                 </div>
-                <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--accent-emerald)' }}>85+ Hrs</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Saved / Month</div>
                 </div>
-                <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>Zero</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Recurring Software Fee</div>
                 </div>
-                <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--accent-amber)' }}>100%</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Yardi Native Solution</div>
                 </div>
@@ -116,9 +116,9 @@ export default function PresentationDeck({ onNavigateToDemo }) {
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', alignItems: 'center' }}>
               
-              <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <Building2 size={28} color="var(--accent-cyan)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>1. Bank Partner Intake</div>
+                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>1. Bank Partner Intake</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Daily electronic feeds from JPMC, Citi, WF, etc.</div>
               </div>
 
@@ -126,9 +126,9 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 <ArrowRight size={20} style={{ margin: '0 auto' }} />
               </div>
 
-              <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <ShieldCheck size={28} color="var(--accent-amber)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>2. Data Validation</div>
+                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>2. Data Validation</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Standardized statement normalization</div>
               </div>
 
@@ -136,9 +136,9 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 <ArrowRight size={20} style={{ margin: '0 auto' }} />
               </div>
 
-              <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <Layers size={28} color="var(--accent-purple)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>3. Yardi Voyager Intake</div>
+                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>3. Yardi Voyager Intake</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Direct ingestion into Voyager Cash Module</div>
               </div>
 
@@ -146,9 +146,9 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 <ArrowRight size={20} style={{ margin: '0 auto' }} />
               </div>
 
-              <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <TrendingUp size={28} color="var(--accent-emerald)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>4. Rules Auto-Clearing</div>
+                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>4. Rules Auto-Clearing</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>91%+ clearance rate</div>
               </div>
 

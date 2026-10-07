@@ -36,7 +36,7 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
         </div>
 
         {/* Tab Navigation */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(15, 23, 42, 0.5)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--nav-bg)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
           <button
             onClick={() => setActiveTab('presentation')}
             className={`btn ${activeTab === 'presentation' ? 'btn-primary' : 'btn-secondary'}`}
