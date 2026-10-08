@@ -85,11 +85,11 @@ export default function MatchingRateDemo() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase' }}>
             <Clock size={16} color="var(--accent-purple)" /> Monthly Productivity Gain
           </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '8px' }}>
-            85+ Hrs
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '8px' }}>
+            ~15–120+ Hrs
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>
-            Accounting labor hours saved monthly
+            Labor hours saved monthly (scales with bank & transaction volume)*
           </div>
         </div>
       </div>

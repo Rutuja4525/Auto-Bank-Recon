@@ -3,9 +3,10 @@ export const solutionOverview = {
   subtitle: "Finance Team Productivity & One-Time Investment Solution",
   version: "Enterprise Production Grade",
   vendor: "Yardi Integration Partner",
-  description: "Designed for Finance Leadership & Accounting Teams to automate daily bank reconciliation directly inside Yardi Voyager. Replaces manual line-by-line statement matching with automated rules, saving 85+ accounting hours monthly with a 100% one-time implementation investment.",
+  description: "Designed for Finance Leadership & Accounting Teams to automate daily bank reconciliation directly inside Yardi Voyager. Replaces manual line-by-line statement matching with automated rules, saving an estimated 15 to 120+ accounting hours monthly depending on bank count, active accounts, and transaction volume.",
   keyMetrics: {
-    monthlyHoursSaved: "85+ Hours/Mo",
+    monthlyHoursSaved: "~15–120+ Hours/Mo",
+    monthlyHoursNote: "Varies by banks, accounts & volume",
     costModel: "One-Time Investment",
     recurringSaaS: "Zero Subscription Fees",
     matchingRate: 91.45,

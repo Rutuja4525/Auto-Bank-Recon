@@ -13,7 +13,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       subtitle: "Transforming accounting team productivity with daily automated clearing and a 100% one-time investment model.",
       content: (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '24px' }}>
-          
+
           {/* Highlight ROI Banner */}
           <div style={{
             background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15))',
@@ -55,8 +55,9 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 Transition accounting staff from tedious, line-by-line manual bank statement matching to a streamlined, <strong style={{ color: 'var(--text-main)' }}>exception-based review model</strong>.
               </p>
               <ul style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px', paddingLeft: 0, listStyle: 'none' }}>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}>
-                  <CheckCircle size={16} color="var(--accent-emerald)" /> Saves 85+ accounting hours every month
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.875rem' }}>
+                  <CheckCircle size={16} color="var(--accent-emerald)" style={{ marginTop: '3px', flexShrink: 0 }} />
+                  <span>Saves an estimated <strong>15 to 120+ accounting hours monthly</strong> (scales directly with bank count, active accounts & transaction volume)</span>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}>
                   <CheckCircle size={16} color="var(--accent-emerald)" /> Daily automated electronic statement feeds from all bank partners
@@ -76,16 +77,16 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 <div style={{ padding: '10px', background: 'rgba(16, 185, 129, 0.15)', borderRadius: '10px', color: 'var(--accent-emerald)' }}>
                   <BarChart3 size={24} />
                 </div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Performance & Cost Metrics</h3>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Performance & Savings Metrics</h3>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
                 <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800 }} className="gradient-text">91.45%</div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 800 }} className="gradient-text">90%+</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Auto-Clear Rate</div>
                 </div>
                 <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--accent-emerald)' }}>85+ Hrs</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Saved / Month</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent-emerald)' }}>~15–120+ Hrs</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Saved / Months (Varies by Volume)*</div>
                 </div>
                 <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>Zero</div>
@@ -138,7 +139,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
               End-to-End Financial Reconciliation Process
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', alignItems: 'center' }}>
-              
+
               <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <Building2 size={28} color="var(--accent-cyan)" style={{ margin: '0 auto 8px' }} />
                 <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>1. Bank Partner Intake</div>
@@ -288,7 +289,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
 
   return (
     <div className="animate-fade-in">
-      
+
       {/* Slide Header Control */}
       <div className="glass-panel" style={{ padding: '24px 32px', marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
