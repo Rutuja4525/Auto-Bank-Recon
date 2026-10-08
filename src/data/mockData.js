@@ -17,10 +17,51 @@ export const solutionOverview = {
   }
 };
 
+export const keyAdvantages = [
+  {
+    title: "100% Executed in Yardi (No Extra Machine)",
+    desc: "Everything runs natively inside Yardi Voyager. No additional machines, servers, or external software required."
+  },
+  {
+    title: "One-Time Payment (Zero Recurring Fees)",
+    desc: "Pay once for complete development & rollout. Zero recurring subscription fees, annual licenses, or per-user seat charges."
+  },
+  {
+    title: "Unlimited Scale (Add Banks Anytime)",
+    desc: "Easily add new bank accounts, financial institutions, and portfolio entities at any time without extra costs."
+  },
+  {
+    title: "High Automated Clearing Rate",
+    desc: "Most account transactions (90%+) are automatically matched and cleared daily without manual accounting touch."
+  },
+  {
+    title: "Multi-Rule & Fuzzy Logic Engine",
+    desc: "Advanced matching algorithms equipped with multi-level criteria, exact reference matching, and intelligent fuzzy logic."
+  }
+];
+
+export const supportedBankList = [
+  "JPMorgan",
+  "Wells Fargo",
+  "Bank of America",
+  "Citizens Bank",
+  "East West Bank",
+  "Northern Trust",
+  "Santander",
+  "BNY Melon",
+  "Key Bank",
+  "Citi Bank",
+  "CAIXIA",
+  "UMB Bank",
+  "First Citizens",
+  "Western Alliance Bank",
+  "BMO Bank"
+];
+
 export const bankAccountsData = [
   {
     code: "JPMC-OP",
-    accountName: "JPMorgan Chase Operating",
+    accountName: "JPMorgan Operating",
     acctNumber: "XXXX-4821",
     currency: "USD",
     glAccount: "1010-00",
@@ -42,7 +83,7 @@ export const bankAccountsData = [
   },
   {
     code: "KEY-ZBA",
-    accountName: "KeyBank Payroll ZBA Account",
+    accountName: "Key Bank Payroll ZBA Account",
     acctNumber: "XXXX-3309",
     currency: "USD",
     glAccount: "1030-00",
@@ -53,7 +94,7 @@ export const bankAccountsData = [
   },
   {
     code: "CITI-LBX",
-    accountName: "Citizens Commercial Lockbox",
+    accountName: "Citizens Bank Commercial Lockbox",
     acctNumber: "XXXX-6621",
     currency: "USD",
     glAccount: "1040-00",
@@ -91,7 +132,7 @@ export const transactionsData = [
   {
     id: "TXN-2004101",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/01/2026",
     flowCode: 145,
     type: "ACH Tenant Rent Collection",
@@ -105,7 +146,7 @@ export const transactionsData = [
   {
     id: "TXN-2004102",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/01/2026",
     flowCode: 501,
     type: "Automatic Sweep Debit",
@@ -119,7 +160,7 @@ export const transactionsData = [
   {
     id: "TXN-2004103",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/02/2026",
     flowCode: 145,
     type: "ACH Tenant Rent Collection",
@@ -133,7 +174,7 @@ export const transactionsData = [
   {
     id: "TXN-2004104",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/03/2026",
     flowCode: 145,
     type: "ACH Maintenance Fee",
@@ -147,7 +188,7 @@ export const transactionsData = [
   {
     id: "TXN-2004105",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/03/2026",
     flowCode: 145,
     type: "ACH Unidentified Credit",
@@ -161,7 +202,7 @@ export const transactionsData = [
   {
     id: "TXN-2004106",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/04/2026",
     flowCode: 455,
     type: "Vendor ACH Payment",
@@ -175,7 +216,7 @@ export const transactionsData = [
   {
     id: "TXN-2004107",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/05/2026",
     flowCode: 145,
     type: "ACH Tenant Rent Collection",
@@ -189,7 +230,7 @@ export const transactionsData = [
   {
     id: "TXN-2004108",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/05/2026",
     flowCode: 501,
     type: "Automatic Sweep Debit",
@@ -203,7 +244,7 @@ export const transactionsData = [
   {
     id: "TXN-2004109",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/08/2026",
     flowCode: 145,
     type: "ACH Security Deposit",
@@ -217,7 +258,7 @@ export const transactionsData = [
   {
     id: "TXN-2004110",
     bankCode: "CITI-LBX",
-    bankAcctName: "Citizens Commercial Lockbox",
+    bankAcctName: "Citizens Bank Commercial Lockbox",
     date: "09/09/2026",
     flowCode: 698,
     type: "Bank Service Charge",
@@ -231,14 +272,21 @@ export const transactionsData = [
 ];
 
 export const fileLogsData = [
-  { id: "LOG-0901-01", bank: "JPMorgan Chase", fileName: "SFTP_JPMC_BANKFEED_20260901.TRU", records: 240, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-01", bank: "JPMorgan", fileName: "SFTP_JPMC_BANKFEED_20260901.TRU", records: 240, date: "09/01/2026 08:00 AM", status: "Success", errorCount: 0 },
   { id: "LOG-0901-02", bank: "Wells Fargo", fileName: "SFTP_WF_BANKFEED_20260901.TRU", records: 115, date: "09/01/2026 08:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-03", bank: "KeyBank", fileName: "SFTP_KEY_BANKFEED_20260901.TRU", records: 88, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-04", bank: "Citizens Commercial", fileName: "SFTP_CITI_BANKFEED_20260901.TRU", records: 320, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-05", bank: "Bank of America", fileName: "SFTP_BOA_BANKFEED_20260901.TRU", records: 194, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0901-06", bank: "PNC Bank", fileName: "SFTP_PNC_BANKFEED_20260901.TRU", records: 76, date: "09/01/2026 10:30 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0902-01", bank: "US Bank", fileName: "SFTP_USB_BANKFEED_20260902.TRU", records: 142, date: "09/02/2026 08:00 AM", status: "Success", errorCount: 0 },
-  { id: "LOG-0902-02", bank: "Capital One", fileName: "SFTP_CAP1_BANKFEED_20260902.TRU", records: 64, date: "09/02/2026 08:30 AM", status: "Success", errorCount: 0 }
+  { id: "LOG-0901-03", bank: "Bank of America", fileName: "SFTP_BOA_BANKFEED_20260901.TRU", records: 194, date: "09/01/2026 09:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-04", bank: "Citizens Bank", fileName: "SFTP_CITIZENS_BANKFEED_20260901.TRU", records: 320, date: "09/01/2026 09:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-05", bank: "East West Bank", fileName: "SFTP_EWB_BANKFEED_20260901.TRU", records: 95, date: "09/01/2026 10:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-06", bank: "Northern Trust", fileName: "SFTP_NTRUST_BANKFEED_20260901.TRU", records: 112, date: "09/01/2026 10:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-07", bank: "Santander", fileName: "SFTP_SAN_BANKFEED_20260901.TRU", records: 88, date: "09/01/2026 11:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0901-08", bank: "BNY Melon", fileName: "SFTP_BNY_BANKFEED_20260901.TRU", records: 156, date: "09/01/2026 11:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-01", bank: "Key Bank", fileName: "SFTP_KEY_BANKFEED_20260902.TRU", records: 88, date: "09/02/2026 08:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-02", bank: "Citi Bank", fileName: "SFTP_CITI_BANKFEED_20260902.TRU", records: 210, date: "09/02/2026 08:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-03", bank: "CAIXIA", fileName: "SFTP_CAIXIA_BANKFEED_20260902.TRU", records: 74, date: "09/02/2026 09:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-04", bank: "UMB Bank", fileName: "SFTP_UMB_BANKFEED_20260902.TRU", records: 103, date: "09/02/2026 09:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-05", bank: "First Citizens", fileName: "SFTP_FCIT_BANKFEED_20260902.TRU", records: 130, date: "09/02/2026 10:00 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-06", bank: "Western Alliance Bank", fileName: "SFTP_WAB_BANKFEED_20260902.TRU", records: 92, date: "09/02/2026 10:30 AM", status: "Success", errorCount: 0 },
+  { id: "LOG-0902-07", bank: "BMO Bank", fileName: "SFTP_BMO_BANKFEED_20260902.TRU", records: 165, date: "09/02/2026 11:00 AM", status: "Success", errorCount: 0 }
 ];
 
 export const implementationRoadmap = [

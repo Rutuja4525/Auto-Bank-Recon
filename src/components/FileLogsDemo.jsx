@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fileLogsData } from '../data/mockData';
+import { fileLogsData, supportedBankList } from '../data/mockData';
 import { Server, CheckCircle2 } from 'lucide-react';
 
 export default function FileLogsDemo() {
@@ -25,13 +25,13 @@ export default function FileLogsDemo() {
               <span className="badge badge-info">Ingestion Audit</span>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Automated electronic statement feed monitoring across 12 connected commercial bank partners.
+              Automated electronic statement feed monitoring across {supportedBankList.length} connected commercial bank partners.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>
             <span className="badge badge-success" style={{ padding: '8px 14px' }}>
-              <Server size={14} /> 12 Connected Bank Feeds Active
+              <Server size={14} /> {supportedBankList.length} Connected Bank Feeds Active
             </span>
           </div>
         </div>
@@ -41,8 +41,8 @@ export default function FileLogsDemo() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <div className="glass-card" style={{ padding: '20px' }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Active Bank Feeds</div>
-          <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: 'var(--accent-cyan)' }}>12 Banks</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>JPMC, Citi, Wells Fargo, etc.</div>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4px', color: 'var(--accent-cyan)' }}>{supportedBankList.length} Banks</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>JPMorgan, Wells Fargo, Bank of America, etc.</div>
         </div>
 
         <div className="glass-card" style={{ padding: '20px' }}>
@@ -76,10 +76,9 @@ export default function FileLogsDemo() {
               }}
             >
               <option value="all">All Financial Institutions</option>
-              <option value="JPMorgan">JPMorgan Chase</option>
-              <option value="KeyBank">KeyBank</option>
-              <option value="Truist">Truist Bank</option>
-              <option value="Citizens">Citizens Commercial</option>
+              {supportedBankList.map(bank => (
+                <option key={bank} value={bank}>{bank}</option>
+              ))}
             </select>
           </div>
         </div>

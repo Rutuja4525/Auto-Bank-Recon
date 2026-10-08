@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronLeft, CheckCircle, ArrowRight, ShieldCheck, Clock, Layers, TrendingUp, BarChart3, Building2, Zap } from 'lucide-react';
-import { solutionOverview, implementationRoadmap } from '../data/mockData';
+import { solutionOverview, implementationRoadmap, keyAdvantages } from '../data/mockData';
 
 export default function PresentationDeck({ onNavigateToDemo }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -99,6 +99,29 @@ export default function PresentationDeck({ onNavigateToDemo }) {
             </div>
           </div>
 
+          {/* Key Advantages Grid */}
+          <div className="glass-card" style={{ padding: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <div style={{ padding: '10px', background: 'rgba(6, 182, 212, 0.15)', borderRadius: '10px', color: 'var(--accent-cyan)' }}>
+                <CheckCircle size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Solution Advantages</h3>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+              {keyAdvantages.map((adv, idx) => (
+                <div key={idx} style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)', marginBottom: '6px' }}>
+                    <CheckCircle size={16} color="var(--accent-emerald)" style={{ flexShrink: 0 }} />
+                    {adv.title}
+                  </div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                    {adv.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       )
     },
@@ -119,7 +142,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
               <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
                 <Building2 size={28} color="var(--accent-cyan)" style={{ margin: '0 auto 8px' }} />
                 <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>1. Bank Partner Intake</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Daily electronic feeds from JPMC, Citi, WF, etc.</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Daily electronic feeds from JPMorgan, Wells Fargo, Bank of America, etc.</div>
               </div>
 
               <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--accent-cyan)', textAlign: 'center' }}>
@@ -161,7 +184,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
                 Multi-Bank Compatibility Out-of-the-Box
               </h4>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Fully compatible with major commercial banking partners: JPMorgan Chase, KeyBank, Citizens, Truist, Capital One, Pinnacle, Western Alliance, PNC, Synovus, US Bank, Bank of Hawaii, and Renasant Bank.
+                Fully compatible with major commercial banking partners: JPMorgan, Wells Fargo, Bank of America, Citizens Bank, East West Bank, Northern Trust, Santander, BNY Melon, Key Bank, Citi Bank, CAIXIA, UMB Bank, First Citizens, Western Alliance Bank, and BMO Bank.
               </p>
             </div>
 
@@ -183,7 +206,7 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       title: "Multi-Level Intelligent Matching Engine",
       subtitle: "Configurable matching criteria leveraging bank transaction codes, reference numbers, customer memo text, and exact amounts.",
       content: (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginTop: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '24px' }}>
           <div className="glass-card" style={{ padding: '20px' }}>
             <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
               1. Exact Reference Match
@@ -212,6 +235,16 @@ export default function PresentationDeck({ onNavigateToDemo }) {
               Auto-books monthly account service charges and interest income directly to designated GL cash accounts with full audit logs.
             </p>
             <div className="badge badge-purple">Zero Manual Entry</div>
+          </div>
+
+          <div className="glass-card" style={{ padding: '20px' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
+              4. Multi-Rule & Fuzzy Logic Engine
+            </h4>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '12px' }}>
+              Employs multi-level criteria and intelligent fuzzy matching logic to clear complex or partial reference statement lines.
+            </p>
+            <div className="badge badge-success">Fuzzy Matching Engine</div>
           </div>
         </div>
       )
