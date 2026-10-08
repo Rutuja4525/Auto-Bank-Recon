@@ -20,7 +20,7 @@ export const solutionOverview = {
 export const keyAdvantages = [
   {
     title: "100% Executed in Yardi (No Extra Machine)",
-    desc: "Everything runs natively inside Yardi Voyager. No additional machines, servers, or external software required."
+    desc: "Everything runs natively inside Yardi Voyager. No additional machines, servers, or third-party software required."
   },
   {
     title: "One-Time Payment (Zero Recurring Fees)",

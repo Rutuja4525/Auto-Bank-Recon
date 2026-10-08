@@ -180,11 +180,11 @@ export default function PresentationDeck({ onNavigateToDemo }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             <div className="glass-card" style={{ padding: '20px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '12px', color: 'var(--accent-cyan)' }}>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '8px', color: 'var(--accent-cyan)' }}>
                 Multi-Bank Compatibility Out-of-the-Box
               </h4>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Fully compatible with major commercial banking partners: JPMorgan, Wells Fargo, Bank of America, Citizens Bank, East West Bank, Northern Trust, Santander, BNY Melon, Key Bank, Citi Bank, CAIXIA, UMB Bank, First Citizens, Western Alliance Bank, and BMO Bank.
+                The solution is based on industry-standard bank formats: <strong style={{ color: 'var(--text-main)' }}>BI2</strong>, <strong style={{ color: 'var(--text-main)' }}>CAMT 53</strong>, and <strong style={{ color: 'var(--text-main)' }}>MT 940</strong>. Banks supporting these formats should work seamlessly with the solution (including JPMorgan, Wells Fargo, Bank of America, Citizens Bank, East West Bank, Northern Trust, Santander, BNY Mellon, Key Bank, Citi, UMB, First Citizens, Western Alliance, BMO, etc.).
               </p>
             </div>
 
