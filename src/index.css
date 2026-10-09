@@ -1,88 +1,81 @@
+/* Yardi Voyager Design System & Styling */
 :root {
-  --bg-primary: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-card: #1f2937;
-  --bg-card-hover: #374151;
-  --bg-glass: rgba(31, 41, 55, 0.65);
+  /* Default Yardi Voyager Light Palette */
+  --yardi-bg: #f4f6f8;
+  --yardi-header-bg: #0a2540;
+  --yardi-header-text: #ffffff;
+  --yardi-nav-bg: #e2e7ec;
+  --yardi-nav-border: #b0b8c0;
+  --yardi-tab-active-bg: #ffffff;
+  --yardi-tab-active-text: #004b87;
+  --yardi-tab-inactive-bg: #d8e0e8;
+  --yardi-tab-inactive-text: #333333;
   
-  --text-main: #f9fafb;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
+  --yardi-panel-bg: #ebf0f5;
+  --yardi-panel-border: #b8c4d0;
   
-  --accent-cyan: #06b6d4;
-  --accent-cyan-glow: rgba(6, 182, 212, 0.25);
-  --accent-blue: #3b82f6;
-  --accent-emerald: #10b981;
-  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
-  --accent-purple: #8b5cf6;
+  --yardi-input-bg: #ffffff;
+  --yardi-input-active-bg: #cbe3f5;
+  --yardi-input-border: #7f9db9;
+  --yardi-input-text: #000000;
   
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(6, 182, 212, 0.3);
+  --yardi-btn-bg: linear-gradient(180deg, #ffffff 0%, #ebebeb 50%, #dcdcdc 100%);
+  --yardi-btn-hover: linear-gradient(180deg, #ffffff 0%, #f0f0f0 50%, #d0d0d0 100%);
+  --yardi-btn-border: #707070;
+  --yardi-btn-text: #000000;
   
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  --yardi-table-th-bg: linear-gradient(180deg, #f5f6f8 0%, #dcdcdc 100%);
+  --yardi-table-th-border: #808080;
+  --yardi-table-th-text: #000000;
   
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --yardi-table-td-bg: #ffffff;
+  --yardi-table-td-border: #c0c0c0;
+  --yardi-table-td-text: #000000;
+  --yardi-table-hover: #f0f6fa;
   
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 25px rgba(6, 182, 212, 0.2);
-
-  --table-th-bg: #1e293b;
-  --table-th-color: #38bdf8;
-  --input-bg: rgba(15, 23, 42, 0.8);
-  --input-color: #ffffff;
-  --inner-card-bg: rgba(15, 23, 42, 0.6);
-  --nav-bg: rgba(15, 23, 42, 0.5);
-
-  --badge-success-bg: rgba(16, 185, 129, 0.15);
-  --badge-success-text: #34d399;
-  --badge-warning-bg: rgba(245, 158, 11, 0.15);
-  --badge-warning-text: #fbbf24;
-  --badge-danger-bg: rgba(244, 63, 94, 0.15);
-  --badge-danger-text: #f87171;
-  --badge-info-bg: rgba(6, 182, 212, 0.15);
-  --badge-info-text: #38bdf8;
-  --badge-purple-bg: rgba(139, 92, 246, 0.15);
-  --badge-purple-text: #a78bfa;
+  --yardi-link-color: #0066cc;
+  --yardi-text-muted: #555555;
+  
+  --font-yardi: Arial, Helvetica, "Segoe UI", sans-serif;
+  --font-mono: "Courier New", Consolas, monospace;
 }
 
-.light-mode {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --bg-glass: rgba(255, 255, 255, 0.95);
+/* Dark Mode Overrides (Optional Toggle) */
+.dark-mode-override {
+  --yardi-bg: #0b0f19;
+  --yardi-header-bg: #0a192f;
+  --yardi-header-text: #64ffda;
+  --yardi-nav-bg: #111827;
+  --yardi-nav-border: #1f2937;
+  --yardi-tab-active-bg: #1f2937;
+  --yardi-tab-active-text: #38bdf8;
+  --yardi-tab-inactive-bg: #111827;
+  --yardi-tab-inactive-text: #9ca3af;
   
-  --text-main: #0f172a;
-  --text-muted: #334155;
-  --text-dim: #64748b;
+  --yardi-panel-bg: #1f2937;
+  --yardi-panel-border: #374151;
   
-  --border-color: rgba(0, 0, 0, 0.12);
-  --border-glow: rgba(2, 132, 199, 0.4);
-  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-
-  --table-th-bg: #0f172a;
-  --table-th-color: #ffffff;
-  --input-bg: #ffffff;
-  --input-color: #0f172a;
-  --inner-card-bg: #f1f5f9;
-  --nav-bg: #e2e8f0;
-
-  --badge-success-bg: #dcfce7;
-  --badge-success-text: #15803d;
-  --badge-warning-bg: #fef3c7;
-  --badge-warning-text: #b45309;
-  --badge-danger-bg: #ffe4e6;
-  --badge-danger-text: #be123c;
-  --badge-info-bg: #e0f2fe;
-  --badge-info-text: #0369a1;
-  --badge-purple-bg: #f3e8ff;
-  --badge-purple-text: #6b21a8;
+  --yardi-input-bg: #111827;
+  --yardi-input-active-bg: #1e3a5f;
+  --yardi-input-border: #4b5563;
+  --yardi-input-text: #f9fafb;
+  
+  --yardi-btn-bg: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  --yardi-btn-hover: linear-gradient(180deg, #4b5563 0%, #374151 100%);
+  --yardi-btn-border: #6b7280;
+  --yardi-btn-text: #ffffff;
+  
+  --yardi-table-th-bg: #1e293b;
+  --yardi-table-th-border: #475569;
+  --yardi-table-th-text: #38bdf8;
+  
+  --yardi-table-td-bg: #111827;
+  --yardi-table-td-border: #1f2937;
+  --yardi-table-td-text: #e5e7eb;
+  --yardi-table-hover: #1f2937;
+  
+  --yardi-link-color: #38bdf8;
+  --yardi-text-muted: #9ca3af;
 }
 
 * {
@@ -92,181 +85,289 @@
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-main);
-  font-family: var(--font-sans);
+  background-color: var(--yardi-bg);
+  color: var(--yardi-table-td-text);
+  font-family: var(--font-yardi);
   min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-/* Glassmorphism */
-.glass-panel {
-  background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
+/* Yardi Navigation Header */
+.yardi-header {
+  background-color: var(--yardi-header-bg);
+  color: var(--yardi-header-text);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #003366;
 }
 
-.glass-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.yardi-logo-text {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.glass-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+.yardi-logo-tag {
+  background: #0055aa;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: normal;
 }
 
-/* Typography Helpers */
-.font-mono {
-  font-family: var(--font-mono);
+/* Yardi Navigation Tabs */
+.yardi-nav-bar {
+  background-color: var(--yardi-nav-bg);
+  border-bottom: 1px solid var(--yardi-nav-border);
+  padding: 4px 8px 0 8px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-emerald {
-  background: linear-gradient(135deg, #34d399, var(--accent-emerald));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Badges */
-.badge {
-  display: inline-flex;
+.yardi-nav-tab {
+  background: var(--yardi-tab-inactive-bg);
+  color: var(--yardi-tab-inactive-text);
+  border: 1px solid var(--yardi-nav-border);
+  border-bottom: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+  display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
 }
 
-.badge-success {
-  background: var(--badge-success-bg);
-  color: var(--badge-success-text);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+.yardi-nav-tab:hover {
+  background: #eef2f6;
 }
 
-.badge-warning {
-  background: var(--badge-warning-bg);
-  color: var(--badge-warning-text);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+.yardi-nav-tab.active {
+  background: var(--yardi-tab-active-bg);
+  color: var(--yardi-tab-active-text);
+  border-bottom: 1px solid var(--yardi-tab-active-bg);
+  margin-bottom: -1px;
+  box-shadow: 0 -2px 0 #004b87;
 }
 
-.badge-danger {
-  background: var(--badge-danger-bg);
-  color: var(--badge-danger-text);
-  border: 1px solid rgba(244, 63, 94, 0.3);
+/* Yardi Parameter Panel (Filter Box) */
+.yardi-panel {
+  background-color: var(--yardi-panel-bg);
+  border: 1px solid var(--yardi-panel-border);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  position: relative;
 }
 
-.badge-info {
-  background: var(--badge-info-bg);
-  color: var(--badge-info-text);
-  border: 1px solid rgba(6, 182, 212, 0.3);
+.yardi-panel-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #b8c4d0;
+  padding-bottom: 4px;
 }
 
-.badge-purple {
-  background: var(--badge-purple-bg);
-  color: var(--badge-purple-text);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+/* Yardi Sheet Tab (Above Divider Line) */
+.yardi-sheet-tab-container {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #000000;
+  padding-left: 10px;
+  display: flex;
 }
 
-/* Buttons */
-.btn {
+.yardi-sheet-tab {
+  background: #ffffff;
+  border: 1px solid #7f9db9;
+  border-bottom: 1px solid #ffffff;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #004b87;
+  margin-bottom: -1px;
+  display: inline-block;
+}
+
+/* Form Controls */
+.yardi-label {
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.yardi-link-label {
+  font-size: 12px;
+  color: var(--yardi-link-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.yardi-input {
+  background-color: var(--yardi-input-bg);
+  border: 1px solid var(--yardi-input-border);
+  color: var(--yardi-input-text);
+  padding: 3px 6px;
+  font-size: 12px;
+  font-family: var(--font-yardi);
+  border-radius: 1px;
+}
+
+.yardi-input-active {
+  background-color: var(--yardi-input-active-bg);
+}
+
+.yardi-select {
+  background-color: var(--yardi-input-bg);
+  border: 1px solid var(--yardi-input-border);
+  color: var(--yardi-input-text);
+  padding: 2px 6px;
+  font-size: 12px;
+  font-family: var(--font-yardi);
+  border-radius: 1px;
+}
+
+/* Classic Yardi Bevel Button */
+.yardi-btn {
+  background: var(--yardi-btn-bg);
+  border: 1px solid var(--yardi-btn-border);
+  color: var(--yardi-btn-text);
+  padding: 3px 14px;
+  font-size: 12px;
+  font-family: var(--font-yardi);
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #cccccc, 0 1px 1px rgba(0,0,0,0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  gap: 4px;
+  font-weight: normal;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+.yardi-btn:hover {
+  background: var(--yardi-btn-hover);
 }
 
-.btn-primary:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
-  transform: translateY(-1px);
+.yardi-btn:active {
+  box-shadow: inset -1px -1px 0px #ffffff, inset 1px 1px 0px #888888;
 }
 
-.btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
+.yardi-btn u {
+  text-decoration: underline;
 }
 
-.btn-secondary:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--accent-cyan);
+/* Report Output Paper Canvas */
+.yardi-report-canvas {
+  background: #ffffff;
+  padding: 16px 20px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  color: #000000;
 }
 
-.btn-outline {
-  background: transparent;
-  color: var(--accent-cyan);
-  border: 1px solid var(--accent-cyan);
+.yardi-report-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
-.btn-outline:hover {
-  background: rgba(6, 182, 212, 0.1);
+.yardi-report-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  font-family: Arial, sans-serif;
 }
 
-/* Data Tables */
-.custom-table-container {
+.yardi-report-subtitle {
+  font-size: 11px;
+  color: #333333;
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
+/* Yardi Data Grid Table */
+.yardi-table-container {
   width: 100%;
   overflow-x: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
 }
 
-.custom-table {
+.yardi-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 11px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+
+.yardi-table th {
+  background: var(--yardi-table-th-bg);
+  border: 1px solid var(--yardi-table-th-border);
+  color: var(--yardi-table-th-text);
+  font-weight: bold;
+  padding: 4px 6px;
   text-align: left;
-  font-size: 0.875rem;
-}
-
-.custom-table th {
-  background-color: var(--table-th-bg);
-  color: var(--table-th-color);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 14px 16px;
-  border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.custom-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-main);
   white-space: nowrap;
 }
 
-.custom-table tr:hover td {
-  background-color: rgba(6, 182, 212, 0.04);
+.yardi-table td {
+  background-color: var(--yardi-table-td-bg);
+  border: 1px solid var(--yardi-table-td-border);
+  color: var(--yardi-table-td-text);
+  padding: 4px 6px;
+  white-space: nowrap;
+}
+
+.yardi-table tr:hover td {
+  background-color: var(--yardi-table-hover);
+}
+
+.yardi-table-link {
+  color: var(--yardi-link-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.yardi-table-link:hover {
+  text-decoration: underline;
+}
+
+.yardi-totals-row td {
+  font-weight: bold;
+  border-top: 2px solid #000000;
+  border-bottom: 1px solid #000000;
+  background-color: #f9f9f9;
+}
+
+/* Calendar Button Icon */
+.yardi-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+  border: 1px solid #7f9db9;
+  border-left: none;
+  cursor: pointer;
+  font-size: 10px;
+  color: #333;
 }
 
 /* Scrollbar */
@@ -276,33 +377,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 4px;
+  background: #a0a0a0;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-.pulse-glow {
-  animation: pulseGlow 2.5s infinite;
+  background: #777777;
 }

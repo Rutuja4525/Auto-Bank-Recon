@@ -295,3 +295,14 @@ export const implementationRoadmap = [
   { step: 2, title: "Package Deployment", desc: "One-click deployment completed directly on our side within just 2 hours." },
   { step: 3, title: "User Acceptance & Production Go-Live", desc: "End-to-end reconciliation validation, finance team walkthrough, and full production go-live." }
 ];
+
+export const screenshotsGallery = [
+  { id: 1, title: "Bank Reconciliation Launcher", description: "Multi-bank launcher module displaying property, cutoff date, output controls, and connected GL account balances.", file: "/extracted_screenshots/word/media/image1.png" },
+  { id: 2, title: "Bank Reconciliation Matching Rate Report", description: "Executive matching analytics report with unmatched/matched counts and automated clearance rate %.", file: "/extracted_screenshots/word/media/image2.png" },
+  { id: 3, title: "List Bank Transactions Filter Panel", description: "Yardi parameter selection dialog for bank code, date ranges, and clearing filters.", file: "/extracted_screenshots/word/media/image3.png" },
+  { id: 4, title: "List Bank Transactions Ledger", description: "Detailed bank feed transaction ledger with flow codes, DB/CR indicators, bank references, and cleared status.", file: "/extracted_screenshots/word/media/image4.png" },
+  { id: 5, title: "BAI2 Files Log Filter Dialog", description: "Bank feed statement intake audit filter screen.", file: "/extracted_screenshots/word/media/image5.png" },
+  { id: 6, title: "BAI2 Files Log Intake History", description: "Electronic bank statement intake audit log with download, conversion, and Yardi import timestamps.", file: "/extracted_screenshots/word/media/image6.png" },
+  { id: 7, title: "Bank Balances with GL Account BAI2 Filter", description: "GL account balance parameter dialog by date and property entity.", file: "/extracted_screenshots/word/media/image7.png" }
+];
+

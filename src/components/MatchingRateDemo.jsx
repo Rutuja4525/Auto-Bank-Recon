@@ -1,167 +1,250 @@
 import React, { useState } from 'react';
 import { matchingRateReport } from '../data/mockData';
-import { Search, Filter, TrendingUp, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
 
 export default function MatchingRateDemo() {
+  const [bankInput, setBankInput] = useState("");
+  const [propertyInput, setPropertyInput] = useState("fivf3lp");
+  const [dateFrom, setDateFrom] = useState(matchingRateReport.dateFrom);
+  const [dateTo, setDateTo] = useState(matchingRateReport.dateTo);
+  const [reportName, setReportName] = useState("Bank Reconciliation Matching Rate Report (brecs)");
+  const [outputType, setOutputType] = useState("Screen");
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [filterMode, setFilterMode] = useState("all");
 
   const filteredRows = matchingRateReport.rows.filter(row => {
-    const matchesSearch = row.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = row.description.toLowerCase().includes(searchTerm.toLowerCase()) || row.flowCode.toString().includes(searchTerm);
     if (filterMode === "perfect") return matchesSearch && row.rate === 100;
     if (filterMode === "partial") return matchesSearch && row.rate < 100;
     return matchesSearch;
   });
 
-  const getRateBadge = (rate) => {
-    if (rate === 100) return <span className="badge badge-success">100.00%</span>;
-    if (rate >= 75) return <span className="badge badge-info">{rate.toFixed(2)}%</span>;
-    if (rate > 0) return <span className="badge badge-warning">{rate.toFixed(2)}%</span>;
-    return <span className="badge badge-danger">0.00%</span>;
-  };
+  const totalUnmatched = filteredRows.reduce((acc, r) => acc + r.unmatched, 0);
+  const totalMatched = filteredRows.reduce((acc, r) => acc + r.matched, 0);
+  const totalTxns = totalUnmatched + totalMatched;
+  const overallRate = totalTxns > 0 ? ((totalMatched / totalTxns) * 100).toFixed(2) : "0.00";
 
   return (
-    <div className="animate-fade-in">
+    <div style={{ padding: '4px' }}>
       
-      {/* Top Header */}
-      <div className="glass-panel" style={{ padding: '20px 28px', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Automated Matching Analytics</h2>
-              <span className="badge badge-info">Finance Analytics</span>
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Reconciliation Period: {matchingRateReport.dateFrom} to {matchingRateReport.dateTo} | Entity: {matchingRateReport.property}
-            </p>
-          </div>
-          <div>
-            <span className="badge badge-success" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>
-              Overall Auto-Clearing: {matchingRateReport.overallRate}%
-            </span>
-          </div>
-        </div>
+      {/* Page Title */}
+      <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#000000', marginBottom: '8px', borderBottom: '1px solid #000000', paddingBottom: '4px' }}>
+        Bank Reconciliation Matching Rate Report
       </div>
 
-      {/* KPI Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '24px' }}>
-        <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase' }}>
-            <TrendingUp size={16} color="var(--accent-cyan)" /> Overall Match Rate
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, marginTop: '8px' }} className="gradient-text">
-            {matchingRateReport.overallRate}%
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>
-            Automated daily clearance precision
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase' }}>
-            <CheckCircle size={16} color="var(--accent-emerald)" /> Auto-Cleared Items
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--accent-emerald)', marginTop: '8px' }}>
-            {matchingRateReport.totalMatched}
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-            Cleared automatically with 0 human effort
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase' }}>
-            <AlertTriangle size={16} color="var(--accent-amber)" /> Exception Review Pool
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--accent-amber)', marginTop: '8px' }}>
-            {matchingRateReport.totalUnmatched}
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-            Items queued for accounting review
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ padding: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase' }}>
-            <Clock size={16} color="var(--accent-purple)" /> Monthly Productivity Gain
-          </div>
-          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '8px' }}>
-            ~15–120+ Hrs
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', marginTop: '4px' }}>
-            Labor hours saved monthly (scales with bank & transaction volume)*
-          </div>
-        </div>
-      </div>
-
-      {/* Detail Data Table */}
-      <div className="glass-card" style={{ padding: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ position: 'relative' }}>
-              <Search size={16} color="var(--text-muted)" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
+      {/* Top Filter Controls (Yardi Parameter Panel) */}
+      <div className="yardi-panel" style={{ background: '#f4f6f8', border: 'none', padding: '12px 10px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
+          
+          {/* Left Fields */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '300px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="yardi-link-label" style={{ width: '90px' }}>Bank</span>
               <input
                 type="text"
-                placeholder="Search transaction description..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                style={{
-                  padding: '8px 12px 8px 36px',
-                  borderRadius: '8px',
-                  background: 'var(--input-bg)',
-                  border: '1px solid var(--border-color)',
-                  color: 'var(--input-color)',
-                  fontSize: '0.85rem'
-                }}
+                value={bankInput}
+                onChange={(e) => setBankInput(e.target.value)}
+                className="yardi-input"
+                style={{ width: '150px' }}
               />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="yardi-link-label" style={{ width: '90px' }}>Property</span>
+              <input
+                type="text"
+                value={propertyInput}
+                onChange={(e) => setPropertyInput(e.target.value)}
+                className="yardi-input"
+                style={{ width: '150px', fontWeight: 'bold' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span className="yardi-label" style={{ width: '90px' }}>Date From</span>
+              <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  value={dateFrom}
+                  onChange={(e) => setDateFrom(e.target.value)}
+                  className="yardi-input yardi-input-active"
+                  style={{ width: '100px' }}
+                />
+                <button className="yardi-calendar-btn">▦</button>
+              </div>
+
+              <span className="yardi-label" style={{ margin: '0 4px' }}>To</span>
+
+              <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  value={dateTo}
+                  onChange={(e) => setDateTo(e.target.value)}
+                  className="yardi-input yardi-input-active"
+                  style={{ width: '100px' }}
+                />
+                <button className="yardi-calendar-btn">▦</button>
+              </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button onClick={() => setFilterMode('all')} className={`btn ${filterMode === 'all' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              All Categories ({matchingRateReport.rows.length})
-            </button>
-            <button onClick={() => setFilterMode('perfect')} className={`btn ${filterMode === 'perfect' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              100% Auto-Cleared
-            </button>
-            <button onClick={() => setFilterMode('partial')} className={`btn ${filterMode === 'partial' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              Requires Review
-            </button>
+          {/* Right Fields */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '440px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Report Name</span>
+              <select
+                value={reportName}
+                onChange={(e) => setReportName(e.target.value)}
+                className="yardi-select"
+                style={{ width: '280px' }}
+              >
+                <option value="Bank Reconciliation Matching Rate Report (brecs)">Bank Reconciliation Matching Rate Report (brecs)</option>
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Output Type</span>
+              <select
+                value={outputType}
+                onChange={(e) => setOutputType(e.target.value)}
+                className="yardi-select"
+                style={{ width: '90px' }}
+              >
+                <option value="Screen">Screen</option>
+                <option value="Excel">Excel</option>
+                <option value="PDF">PDF</option>
+              </select>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '30px' }}>
+                <span className="yardi-label" style={{ width: '90px' }}>Attach Reports</span>
+                <input type="checkbox" />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Merge Reports</span>
+              <input type="checkbox" />
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '170px' }}>
+                <span className="yardi-label" style={{ width: '90px' }}>Email Reports</span>
+                <input type="checkbox" />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px', marginTop: '10px', justifyContent: 'center' }}>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>G</u>enerate</button>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>C</u>lear</button>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>H</u>elp</button>
+              <button className="yardi-btn" style={{ minWidth: '75px', color: '#666' }} disabled>Preview</button>
+            </div>
           </div>
+
+        </div>
+      </div>
+
+      {/* Sheet1 Tab Navigation Bar */}
+      <div className="yardi-sheet-tab-container">
+        <div className="yardi-sheet-tab">Sheet1</div>
+      </div>
+
+      {/* Yardi Report Output Canvas */}
+      <div className="yardi-report-canvas" style={{ borderTop: 'none', paddingTop: '20px' }}>
+        
+        {/* Report Title */}
+        <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#000000', marginBottom: '4px' }}>
+          Bank Reconciliation Matching Rate Report
         </div>
 
-        <div className="custom-table-container">
-          <table className="custom-table">
+        {/* Subtitle Line */}
+        <div style={{ fontSize: '13px', fontWeight: 'bold', color: '#000000', marginBottom: '24px' }}>
+          Date From: {dateFrom}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To: {dateTo}
+        </div>
+
+        {/* Interactive Filter Tools */}
+        <div style={{ marginBottom: '16px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', fontSize: '11px' }}>
+          <span style={{ fontWeight: 'bold' }}>Filter View:</span>
+          <input
+            type="text"
+            placeholder="Search description or flow code..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="yardi-input"
+            style={{ width: '220px' }}
+          />
+          <button onClick={() => setFilterMode('all')} className="yardi-btn" style={{ background: filterMode === 'all' ? '#d4e6f1' : undefined }}>
+            All Items ({matchingRateReport.rows.length})
+          </button>
+          <button onClick={() => setFilterMode('perfect')} className="yardi-btn" style={{ background: filterMode === 'perfect' ? '#d4e6f1' : undefined }}>
+            100% Cleared
+          </button>
+          <button onClick={() => setFilterMode('partial')} className="yardi-btn" style={{ background: filterMode === 'partial' ? '#d4e6f1' : undefined }}>
+            Requires Review
+          </button>
+        </div>
+
+        {/* Data Grid Table (Exact Match to image2.png) */}
+        <div className="yardi-table-container">
+          <table className="yardi-table" style={{ border: 'none' }}>
             <thead>
-              <tr>
-                <th>Transaction Description</th>
-                <th style={{ textAlign: 'center' }}>Unmatched (Review)</th>
-                <th style={{ textAlign: 'center' }}>Matched (Cleared)</th>
-                <th style={{ textAlign: 'center' }}>Total Transactions</th>
-                <th style={{ textAlign: 'right' }}>Matching Rate %</th>
+              <tr style={{ background: 'transparent' }}>
+                <th style={{ background: 'transparent', border: 'none', color: '#000000', fontSize: '12px', fontWeight: 'bold', padding: '6px 8px', width: '110px' }}>
+                  Flow Code
+                </th>
+                <th style={{ background: 'transparent', border: 'none', color: '#000000', fontSize: '12px', fontWeight: 'bold', padding: '6px 8px' }}>
+                  Description
+                </th>
+                <th style={{ background: 'transparent', border: 'none', color: '#000000', fontSize: '12px', fontWeight: 'bold', padding: '6px 8px', textAlign: 'right', width: '130px' }}>
+                  Unmatched Count
+                </th>
+                <th style={{ background: 'transparent', border: 'none', color: '#000000', fontSize: '12px', fontWeight: 'bold', padding: '6px 8px', textAlign: 'right', width: '120px' }}>
+                  Matched Count
+                </th>
+                <th style={{ background: 'transparent', border: 'none', color: '#000000', fontSize: '12px', fontWeight: 'bold', padding: '6px 8px', textAlign: 'right', width: '140px' }}>
+                  Matching Rate %
+                </th>
               </tr>
             </thead>
             <tbody>
-              {filteredRows.map((row, idx) => (
-                <tr key={idx}>
-                  <td style={{ fontWeight: 600, color: 'var(--text-main)' }}>{row.description}</td>
-                  <td style={{ textAlign: 'center', color: row.unmatched > 0 ? 'var(--accent-amber)' : 'var(--text-muted)' }}>
+              {filteredRows.map((row) => (
+                <tr key={row.flowCode}>
+                  <td style={{ border: 'none', fontSize: '12px', padding: '3px 8px' }}>
+                    {row.flowCode}
+                  </td>
+                  <td style={{ border: 'none', fontSize: '12px', padding: '3px 8px' }}>
+                    {row.description}
+                  </td>
+                  <td style={{ border: 'none', fontSize: '12px', textAlign: 'right', padding: '3px 8px' }}>
                     {row.unmatched}
                   </td>
-                  <td style={{ textAlign: 'center', fontWeight: 700, color: 'var(--accent-emerald)' }}>
+                  <td style={{ border: 'none', fontSize: '12px', textAlign: 'right', padding: '3px 8px' }}>
                     {row.matched}
                   </td>
-                  <td style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
-                    {row.matched + row.unmatched}
-                  </td>
-                  <td style={{ textAlign: 'right' }}>
-                    {getRateBadge(row.rate)}
+                  <td style={{ border: 'none', fontSize: '12px', textAlign: 'right', padding: '3px 8px' }}>
+                    {row.rate.toFixed(2)}%
                   </td>
                 </tr>
               ))}
+
+              {/* Totals Row */}
+              <tr style={{ borderTop: '1px solid #000000' }}>
+                <td style={{ border: 'none', padding: '6px 8px' }}></td>
+                <td style={{ border: 'none', fontSize: '12px', fontWeight: 'bold', textAlign: 'right', padding: '6px 8px' }}>
+                  Totals
+                </td>
+                <td style={{ border: 'none', fontSize: '12px', fontWeight: 'bold', textAlign: 'right', padding: '6px 8px' }}>
+                  {totalUnmatched}
+                </td>
+                <td style={{ border: 'none', fontSize: '12px', fontWeight: 'bold', textAlign: 'right', padding: '6px 8px' }}>
+                  {totalMatched}
+                </td>
+                <td style={{ border: 'none', fontSize: '12px', fontWeight: 'bold', textAlign: 'right', padding: '6px 8px' }}>
+                  {overallRate}%
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+
       </div>
 
     </div>

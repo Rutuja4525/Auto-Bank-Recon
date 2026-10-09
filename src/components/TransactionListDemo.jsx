@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { transactionsData } from '../data/mockData';
-import { Search, Filter, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 
 export default function TransactionListDemo() {
+  const [bankCodeInput, setBankCodeInput] = useState("f2co8727");
+  const [bankNameLabel, setBankNameLabel] = useState("KUSH-KUSH, LP LOCKBOX");
+  const [propertyInput, setPropertyInput] = useState("");
+  const [dateFrom, setDateFrom] = useState("09/01/2026");
+  const [dateTo, setDateTo] = useState("09/30/2026");
+  const [txnTypeInput, setTxnTypeInput] = useState("");
+  const [showOnlyUncleared, setShowOnlyUncleared] = useState("No");
+  const [destination, setDestination] = useState("Screen");
+  
   const [txns, setTxns] = useState(transactionsData);
-  const [filterCleared, setFilterCleared] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredTxns = txns.filter(t => {
@@ -12,130 +19,210 @@ export default function TransactionListDemo() {
                           t.custRef.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           t.id.includes(searchTerm) ||
                           t.type.toLowerCase().includes(searchTerm.toLowerCase());
-    if (filterCleared === "cleared") return matchesSearch && t.cleared;
-    if (filterCleared === "uncleared") return matchesSearch && !t.cleared;
+    if (showOnlyUncleared === "Yes") return matchesSearch && !t.cleared;
     return matchesSearch;
   });
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
   };
 
-  const clearedCount = txns.filter(t => t.cleared).length;
-  const unclearedCount = txns.filter(t => !t.cleared).length;
-
   return (
-    <div className="animate-fade-in">
+    <div style={{ padding: '4px' }}>
       
-      {/* Top Banner */}
-      <div className="glass-panel" style={{ padding: '20px 28px', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Bank Transactions & Clearing Ledger</h2>
-              <span className="badge badge-purple">Yardi Voyager View</span>
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Bank Feed: <strong style={{ color: 'var(--text-main)', fontWeight: 700 }}>Citizens Commercial Lockbox (09/01/2026 - 09/30/2026)</strong>
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <span className="badge badge-success" style={{ padding: '8px 14px' }}>
-              {clearedCount} Cleared
-            </span>
-            <span className="badge badge-warning" style={{ padding: '8px 14px' }}>
-              {unclearedCount} Uncleared
-            </span>
-            <span className="badge badge-info" style={{ padding: '8px 14px' }}>
-              Total: {filteredTxns.length} Txns
-            </span>
-          </div>
-        </div>
+      {/* Top Sheet Tab */}
+      <div className="yardi-sheet-tab-container" style={{ marginTop: '0', paddingLeft: '20px' }}>
+        <div className="yardi-sheet-tab" style={{ fontWeight: 'bold' }}>List Bank Transactions</div>
       </div>
 
-      {/* Filter Toolbar */}
-      <div className="glass-card" style={{ padding: '16px 20px', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <div style={{ position: 'relative' }}>
-            <Search size={16} color="var(--text-muted)" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
+      {/* Yardi Form Parameter Box (Matching image3.png) */}
+      <div className="yardi-panel" style={{ background: '#dcdcdc', border: '1px solid #a0a0a0', padding: '16px 20px', marginBottom: '16px' }}>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '650px' }}>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span className="yardi-link-label" style={{ width: '160px' }}>Bank</span>
             <input
               type="text"
-              placeholder="Search reference, Txn ID, or type..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{
-                padding: '8px 12px 8px 36px',
-                borderRadius: '8px',
-                background: 'var(--input-bg)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--input-color)',
-                fontSize: '0.85rem',
-                minWidth: '260px'
-              }}
+              value={bankCodeInput}
+              onChange={(e) => setBankCodeInput(e.target.value)}
+              className="yardi-input"
+              style={{ width: '160px' }}
+            />
+            <span style={{ fontSize: '12px', color: '#000000' }}>{bankNameLabel}</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span className="yardi-link-label" style={{ width: '160px' }}>Property</span>
+            <input
+              type="text"
+              value={propertyInput}
+              onChange={(e) => setPropertyInput(e.target.value)}
+              className="yardi-input"
+              style={{ width: '160px' }}
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '6px' }}>
-            <button onClick={() => setFilterCleared('all')} className={`btn ${filterCleared === 'all' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              All ({txns.length})
-            </button>
-            <button onClick={() => setFilterCleared('cleared')} className={`btn ${filterCleared === 'cleared' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              Cleared ({clearedCount})
-            </button>
-            <button onClick={() => setFilterCleared('uncleared')} className={`btn ${filterCleared === 'uncleared' ? 'btn-primary' : 'btn-secondary'}`} style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-              Uncleared ({unclearedCount})
-            </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="yardi-label" style={{ width: '160px' }}>Date</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <input
+                type="text"
+                value={dateFrom}
+                onChange={(e) => setDateFrom(e.target.value)}
+                className="yardi-input yardi-input-active"
+                style={{ width: '110px' }}
+              />
+              <button className="yardi-calendar-btn">▦</button>
+            </div>
+
+            <span style={{ fontSize: '12px', margin: '0 8px' }}>-to-</span>
+
+            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <input
+                type="text"
+                value={dateTo}
+                onChange={(e) => setDateTo(e.target.value)}
+                className="yardi-input yardi-input-active"
+                style={{ width: '110px' }}
+              />
+              <button className="yardi-calendar-btn">▦</button>
+            </div>
           </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span className="yardi-link-label" style={{ width: '160px' }}>Transaction Type</span>
+            <input
+              type="text"
+              value={txnTypeInput}
+              onChange={(e) => setTxnTypeInput(e.target.value)}
+              className="yardi-input"
+              style={{ width: '160px' }}
+            />
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span className="yardi-label" style={{ width: '160px' }}>Show only un-cleared items?</span>
+            <select
+              value={showOnlyUncleared}
+              onChange={(e) => setShowOnlyUncleared(e.target.value)}
+              className="yardi-select"
+              style={{ width: '60px' }}
+            >
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span className="yardi-label" style={{ width: '160px' }}>Destination</span>
+            <select
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              className="yardi-select"
+              style={{ width: '320px' }}
+            >
+              <option value="Screen">Screen</option>
+              <option value="Excel">Excel</option>
+              <option value="PDF">PDF</option>
+            </select>
+          </div>
+
+          {/* Action Buttons */}
+          <div style={{ display: 'flex', gap: '10px', marginTop: '12px', paddingLeft: '172px' }}>
+            <button className="yardi-btn" style={{ minWidth: '75px', color: '#666' }} disabled>Advanced</button>
+            <button className="yardi-btn" style={{ minWidth: '85px' }}>Submit</button>
+            <button className="yardi-btn" style={{ minWidth: '85px' }}><u>C</u>lear</button>
+            <button className="yardi-btn" style={{ minWidth: '85px' }}>Help</button>
+          </div>
+
+          {/* Metadata Footer */}
+          <div style={{ marginTop: '20px', fontSize: '11px', color: '#333333' }}>
+            File or Code: rs_sql_cc_ShowBAI2Txns.txt<br />
+            Version: 11/14/2025
+          </div>
+
         </div>
+
       </div>
 
-      {/* Main Ledger Table */}
-      <div className="glass-card" style={{ padding: '24px' }}>
-        <div className="custom-table-container">
-          <table className="custom-table">
+      {/* Yardi Report Output Canvas (Matching image4.png) */}
+      <div className="yardi-report-canvas">
+        
+        <div className="yardi-report-header-row">
+          <div>
+            <div className="yardi-report-title">List Bank Transactions</div>
+            <div className="yardi-report-subtitle">
+              Bank={bankCodeInput} AND Date={dateFrom}-{dateTo} AND Show only un-cleared items?={showOnlyUncleared}
+            </div>
+          </div>
+
+          {/* Export Action Buttons */}
+          <div style={{ display: 'flex', gap: '6px' }}>
+            <button className="yardi-btn" style={{ padding: '2px 16px', fontSize: '11px' }}>Excel</button>
+            <button className="yardi-btn" style={{ padding: '2px 16px', fontSize: '11px' }}>PDF</button>
+          </div>
+        </div>
+
+        {/* Quick Filter Bar */}
+        <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 'bold' }}>Quick Search:</span>
+          <input
+            type="text"
+            placeholder="Search reference, Txn ID, or remarks..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="yardi-input"
+            style={{ width: '260px' }}
+          />
+        </div>
+
+        {/* Transactions Table (Exact layout of image4.png) */}
+        <div className="yardi-table-container">
+          <table className="yardi-table">
             <thead>
               <tr>
+                <th>Bank Code</th>
+                <th>Bank Acct Name</th>
+                <th>Bank Txn Date</th>
                 <th>Txn ID</th>
-                <th>Bank Date</th>
+                <th>Flow Code</th>
                 <th>Transaction Type</th>
                 <th style={{ textAlign: 'right' }}>Amount</th>
                 <th>DB/CR</th>
-                <th>Bank Reference</th>
+                <th>Bank Ref</th>
                 <th>Customer Ref</th>
-                <th>Cleared Status</th>
+                <th>Cleared</th>
+                <th>Remarks</th>
               </tr>
             </thead>
             <tbody>
               {filteredTxns.map((t) => (
                 <tr key={t.id}>
-                  <td className="font-mono" style={{ fontWeight: 700, color: 'var(--accent-cyan)' }}>
-                    {t.id}
+                  <td>
+                    <span className="yardi-table-link">{t.bankCode}</span>
                   </td>
+                  <td>{t.bankAcctName}</td>
                   <td>{t.date}</td>
-                  <td style={{ fontWeight: 600 }}>{t.type}</td>
-                  <td className="font-mono" style={{ textAlign: 'right', fontWeight: 700, color: t.typeClass === 'CR' ? '#10b981' : '#f43f5e' }}>
+                  <td>{t.id.replace('TXN-', '')}</td>
+                  <td>{t.flowCode}</td>
+                  <td>{t.type}</td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace' }}>
                     {formatCurrency(t.amount)}
                   </td>
-                  <td>
-                    <span className={`badge ${t.typeClass === 'CR' ? 'badge-success' : 'badge-danger'}`}>
-                      {t.typeClass}
-                    </span>
-                  </td>
-                  <td className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t.bankRef}</td>
-                  <td className="font-mono" style={{ fontSize: '0.8rem' }}>{t.custRef}</td>
-                  <td>
-                    {t.cleared ? (
-                      <span className="badge badge-success"><CheckCircle2 size={12} /> Cleared</span>
-                    ) : (
-                      <span className="badge badge-warning"><XCircle size={12} /> Uncleared</span>
-                    )}
+                  <td>{t.typeClass}</td>
+                  <td style={{ fontFamily: 'monospace' }}>{t.bankRef}</td>
+                  <td>{t.custRef}</td>
+                  <td style={{ textAlign: 'center' }}>{t.cleared ? 'Y' : ''}</td>
+                  <td style={{ fontSize: '10px', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {t.remarks}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
       </div>
 
     </div>

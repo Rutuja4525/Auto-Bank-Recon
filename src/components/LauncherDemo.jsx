@@ -1,162 +1,175 @@
 import React, { useState } from 'react';
 import { bankAccountsData } from '../data/mockData';
-import { CheckCircle2 } from 'lucide-react';
 
 export default function LauncherDemo() {
-  const [selectedProperty, setSelectedProperty] = useState("PRP-1004 - Metro Plaza Commercial Portfolio");
-  const [cutoffDate, setCutoffDate] = useState("2026-09-30");
-  const [accounts, setAccounts] = useState(bankAccountsData);
+  const [propertyCode, setPropertyCode] = useState("fivf3lp");
+  const [cutoffDate, setCutoffDate] = useState("09/30/2026");
+  const [reportName, setReportName] = useState("Bank Reconciliation Launcher (brecs)");
+  const [outputType, setOutputType] = useState("Screen");
+  
+  // Checkbox states
+  const [attachReports, setAttachReports] = useState(false);
+  const [mergeReports, setMergeReports] = useState(false);
+  const [emailReports, setEmailReports] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
+  const [holdEmails, setHoldEmails] = useState(false);
+  const [showOnPortal, setShowOnPortal] = useState(false);
 
-  const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
-  };
-
-  const totalBalance = accounts.reduce((acc, a) => acc + a.bankBalance, 0);
+  const [accounts, setAccounts] = useState([
+    { bank: 'f3cit', accountName: 'Citizens Fund III', acctNum: '24969664', bankName: '', gl: '11001250', currency: '', glDesc: 'Cash - Money Market', balance: 421647.61 },
+    { bank: 'f3jpmzba', accountName: 'JPM ZBA - Fund III', acctNum: '851380599', bankName: '', gl: '11001850', currency: '', glDesc: 'Cash - Fund Level JPM', balance: 309873.53 },
+    { bank: 'f3keyzba', accountName: 'KeyBank ZBA Fund III', acctNum: '359681705372', bankName: '', gl: '11001860', currency: '', glDesc: 'Cash - KeyBank ZBA', balance: 609435.31 },
+    { bank: 'fivf3lp', accountName: 'Faropoint Indus Value Fund III', acctNum: '359681663720', bankName: 'KeyBank NA', gl: '11001350', currency: '', glDesc: 'Cash - Fund/Feeder Level Operating (Equity Account)', balance: 703812.88 },
+  ]);
 
   return (
-    <div className="animate-fade-in">
+    <div style={{ padding: '4px' }}>
       
-      {/* Top Banner & Screen Info */}
-      <div className="glass-panel" style={{ padding: '20px 28px', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Bank Reconciliation Launcher</h2>
-              <span className="badge badge-purple">Yardi Voyager Control</span>
+      {/* Page Title */}
+      <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#000000', marginBottom: '8px', borderBottom: '1px solid #000000', paddingBottom: '4px' }}>
+        Bank Reconciliation Launcher
+      </div>
+
+      {/* Launcher Parameters Form */}
+      <div className="yardi-panel" style={{ background: '#f4f6f8', border: 'none', padding: '12px 10px', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
+          
+          {/* Left Inputs */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '260px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="yardi-link-label" style={{ width: '100px' }}>Property</span>
+              <input
+                type="text"
+                value={propertyCode}
+                onChange={(e) => setPropertyCode(e.target.value)}
+                className="yardi-input yardi-input-active"
+                style={{ width: '140px', fontWeight: 'bold' }}
+              />
             </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-              Multi-bank launcher module auto-populating statement balances directly from electronic bank feeds into Yardi.
-            </p>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="yardi-label" style={{ width: '100px' }}>GL Cutoff date</span>
+              <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  value={cutoffDate}
+                  onChange={(e) => setCutoffDate(e.target.value)}
+                  className="yardi-input yardi-input-active"
+                  style={{ width: '120px' }}
+                />
+                <button className="yardi-calendar-btn" title="Select date">▦</button>
+              </div>
+            </div>
           </div>
+
+          {/* Right Inputs & Options */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '460px' }}>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Report Name</span>
+              <select
+                value={reportName}
+                onChange={(e) => setReportName(e.target.value)}
+                className="yardi-select"
+                style={{ width: '280px' }}
+              >
+                <option value="Bank Reconciliation Launcher (brecs)">Bank Reconciliation Launcher (brecs)</option>
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Output Type</span>
+              <select
+                value={outputType}
+                onChange={(e) => setOutputType(e.target.value)}
+                className="yardi-select"
+                style={{ width: '90px' }}
+              >
+                <option value="Screen">Screen</option>
+                <option value="Excel">Excel</option>
+                <option value="PDF">PDF</option>
+              </select>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '30px' }}>
+                <span className="yardi-label" style={{ width: '90px' }}>Attach Reports</span>
+                <input type="checkbox" checked={attachReports} onChange={(e) => setAttachReports(e.target.checked)} />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Merge Reports</span>
+              <input type="checkbox" checked={mergeReports} onChange={(e) => setMergeReports(e.target.checked)} />
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '170px' }}>
+                <span className="yardi-label" style={{ width: '90px' }}>Email Reports</span>
+                <input type="checkbox" checked={emailReports} onChange={(e) => setEmailReports(e.target.checked)} />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Show Grid</span>
+              <input type="checkbox" checked={showGrid} onChange={(e) => setShowGrid(e.target.checked)} />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span className="yardi-label" style={{ width: '100px', textAlign: 'right' }}>Hold Emails</span>
+              <input type="checkbox" checked={holdEmails} onChange={(e) => setHoldEmails(e.target.checked)} />
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '170px' }}>
+                <span className="yardi-label" style={{ width: '90px' }}>Show on Portal</span>
+                <input type="checkbox" checked={showOnPortal} onChange={(e) => setShowOnPortal(e.target.checked)} />
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div style={{ display: 'flex', gap: '12px', marginTop: '8px', justifyContent: 'center' }}>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>G</u>enerate</button>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>C</u>lear</button>
+              <button className="yardi-btn" style={{ minWidth: '75px' }}><u>H</u>elp</button>
+              <button className="yardi-btn" style={{ minWidth: '75px', color: '#666' }} disabled>Preview</button>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      {/* Launcher Parameters (Yardi Control Panel Style) */}
-      <div className="glass-card" style={{ padding: '20px', marginBottom: '24px' }}>
-        <h4 style={{ fontSize: '0.875rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.05em' }}>
-          Reconciliation Parameters (Yardi Voyager Module)
-        </h4>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-          <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              Property / Portfolio Entity
-            </label>
-            <select
-              value={selectedProperty}
-              onChange={(e) => setSelectedProperty(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                background: 'var(--input-bg)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--input-color)',
-                fontSize: '0.875rem',
-                fontFamily: 'inherit'
-              }}
-            >
-              <option value="PRP-1004 - Metro Plaza Commercial Portfolio">PRP-1004 - Metro Plaza Commercial Portfolio</option>
-              <option value="PRP-2008 - Vanguard Industrial Park">PRP-2008 - Vanguard Industrial Park</option>
-            </select>
-          </div>
-
-          <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              Reconciliation Cutoff Date
-            </label>
-            <input
-              type="date"
-              value={cutoffDate}
-              onChange={(e) => setCutoffDate(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                background: 'var(--input-bg)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--input-color)',
-                fontSize: '0.875rem',
-                fontFamily: 'inherit'
-              }}
-            />
-          </div>
-
-          <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>
-              Report Output Format
-            </label>
-            <select
-              style={{
-                width: '100%',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                background: 'var(--input-bg)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--input-color)',
-                fontSize: '0.875rem',
-                fontFamily: 'inherit'
-              }}
-            >
-              <option>Interactive Screen Grid</option>
-              <option>PDF Reconciliation Package</option>
-              <option>Excel Executive Summary (.xlsx)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Account Balances Table */}
-      <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
-          <div>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Connected Bank Accounts & Auto-Populated Balances</h3>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Balances retrieved daily via electronic statement feeds</p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Bank Balance</div>
-            <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>{formatCurrency(totalBalance)}</div>
-          </div>
-        </div>
-
-        <div className="custom-table-container">
-          <table className="custom-table">
-            <thead>
-              <tr>
-                <th>Bank Code</th>
-                <th>Account Name</th>
-                <th>Acct Number</th>
-                <th>Currency</th>
-                <th>Yardi GL Account</th>
-                <th>GL Description</th>
-                <th style={{ textAlign: 'right' }}>Bank Balance (USD)</th>
-                <th>Reconciled Status</th>
+      {/* Account Grid Table */}
+      <div className="yardi-table-container" style={{ marginTop: '30px' }}>
+        <table className="yardi-table">
+          <thead>
+            <tr>
+              <th style={{ width: '80px' }}>Bank</th>
+              <th>Account Name</th>
+              <th>Acct #</th>
+              <th>Bank Name</th>
+              <th>GL</th>
+              <th>Currency</th>
+              <th>GL Description</th>
+              <th style={{ textAlign: 'right' }}>Bank Balance</th>
+              <th style={{ width: '40px' }}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {accounts.map((acct) => (
+              <tr key={acct.bank}>
+                <td>
+                  <span className="yardi-table-link">{acct.bank}</span>
+                </td>
+                <td>{acct.accountName}</td>
+                <td>{acct.acctNum}</td>
+                <td>{acct.bankName}</td>
+                <td>{acct.gl}</td>
+                <td>{acct.currency}</td>
+                <td>{acct.glDesc}</td>
+                <td style={{ textAlign: 'right', fontFamily: 'monospace' }}>
+                  {acct.balance.toFixed(6)}
+                </td>
+                <td></td>
               </tr>
-            </thead>
-            <tbody>
-              {accounts.map((acct) => (
-                <tr key={acct.code}>
-                  <td>
-                    <span className="font-mono" style={{ fontWeight: 700, color: 'var(--accent-cyan)' }}>{acct.code}</span>
-                  </td>
-                  <td style={{ fontWeight: 600 }}>{acct.accountName}</td>
-                  <td className="font-mono" style={{ color: 'var(--text-muted)' }}>{acct.acctNumber}</td>
-                  <td><span className="badge badge-info">{acct.currency}</span></td>
-                  <td className="font-mono" style={{ fontWeight: 600 }}>{acct.glAccount}</td>
-                  <td style={{ color: 'var(--text-muted)', fontSize: '0.825rem' }}>{acct.glDescription}</td>
-                  <td className="font-mono" style={{ textAlign: 'right', fontWeight: 700, fontSize: '0.95rem' }}>
-                    {formatCurrency(acct.bankBalance)}
-                  </td>
-                  <td>
-                    <span className="badge badge-success">
-                      <CheckCircle2 size={12} /> {acct.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, CheckCircle, ArrowRight, ShieldCheck, Clock, Layers, TrendingUp, BarChart3, Building2, Zap } from 'lucide-react';
 import { solutionOverview, implementationRoadmap, keyAdvantages } from '../data/mockData';
 
 export default function PresentationDeck({ onNavigateToDemo }) {
@@ -12,112 +11,79 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       title: "Yardi Automated Bank Reconciliation Solution",
       subtitle: "Transforming accounting team productivity with daily automated clearing and a 100% one-time investment model.",
       content: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '16px' }}>
 
-          {/* Highlight ROI Banner */}
+          {/* Highlight Banner */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15))',
-            border: '1px solid var(--accent-cyan-glow)',
-            borderRadius: '16px',
-            padding: '20px 24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '16px'
+            background: '#eef6fc',
+            border: '1px solid #7f9db9',
+            padding: '12px 16px',
+            borderRadius: '2px'
           }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-cyan)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase' }}>
-                <ShieldCheck size={18} /> Financial Advantage
-              </div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginTop: '4px', color: 'var(--text-main)' }}>
-                One-Time Development Investment — Zero Lifetime Subscription Costs
-              </h4>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '2px' }}>
-                Unlike costly SaaS tools charging recurring per-seat fees, this solution is built natively inside your Yardi Voyager instance. Pay once, own forever.
-              </p>
+            <div style={{ fontWeight: 'bold', color: '#004b87', fontSize: '13px', marginBottom: '2px' }}>
+              Financial Advantage: One-Time Development Investment — Zero Lifetime Subscription Costs
             </div>
-            <div className="badge badge-success" style={{ padding: '10px 18px', fontSize: '0.9rem' }}>
-              100% Capital Efficient
+            <div style={{ fontSize: '11px', color: '#333' }}>
+              Unlike costly SaaS tools charging recurring per-seat fees, this solution is built natively inside your Yardi Voyager instance. Pay once, own forever.
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
-            {/* Core Objective Card */}
-            <div className="glass-card" style={{ padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <div style={{ padding: '10px', background: 'rgba(6, 182, 212, 0.15)', borderRadius: '10px', color: 'var(--accent-cyan)' }}>
-                  <Zap size={24} />
-                </div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Finance Team Productivity</h3>
-              </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                Transition accounting staff from tedious, line-by-line manual bank statement matching to a streamlined, <strong style={{ color: 'var(--text-main)' }}>exception-based review model</strong>.
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+            
+            {/* Core Objective Panel */}
+            <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+              <div className="yardi-panel-title">Finance Team Productivity Gain</div>
+              <p style={{ color: '#333333', fontSize: '12px', lineHeight: 1.5, marginBottom: '10px' }}>
+                Transition accounting staff from tedious, line-by-line manual bank statement matching to a streamlined, <strong>exception-based review model</strong>.
               </p>
-              <ul style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px', paddingLeft: 0, listStyle: 'none' }}>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.875rem' }}>
-                  <CheckCircle size={16} color="var(--accent-emerald)" style={{ marginTop: '3px', flexShrink: 0 }} />
-                  <span>Saves an estimated <strong>15 to 120+ accounting hours monthly</strong> (scales directly with bank count, active accounts & transaction volume)</span>
-                </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}>
-                  <CheckCircle size={16} color="var(--accent-emerald)" /> Daily automated electronic statement feeds from all bank partners
-                </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}>
-                  <CheckCircle size={16} color="var(--accent-emerald)" /> Auto-clears checks, EFTs, ACH, wires & tenant lockbox deposits
-                </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}>
-                  <CheckCircle size={16} color="var(--accent-emerald)" /> Accelerated financial close & audit-ready transaction history
-                </li>
+              <ul style={{ paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#222' }}>
+                <li>Saves an estimated <strong>15 to 120+ accounting hours monthly</strong> (scales directly with bank count, active accounts & volume)</li>
+                <li>Daily automated electronic statement feeds from all bank partners</li>
+                <li>Auto-clears checks, EFTs, ACH, wires & tenant lockbox deposits</li>
+                <li>Accelerated financial close & audit-ready transaction history</li>
               </ul>
             </div>
 
-            {/* Production Metrics Card */}
-            <div className="glass-card" style={{ padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <div style={{ padding: '10px', background: 'rgba(16, 185, 129, 0.15)', borderRadius: '10px', color: 'var(--accent-emerald)' }}>
-                  <BarChart3 size={24} />
+            {/* Key Metrics Panel */}
+            <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+              <div className="yardi-panel-title">Key Performance & Savings Metrics</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '8px' }}>
+                <div style={{ background: '#f5f7fa', padding: '10px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#004b87' }}>90%+</div>
+                  <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', marginTop: '2px' }}>Auto-Clear Rate</div>
                 </div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Performance & Savings Metrics</h3>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
-                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800 }} className="gradient-text">90%+</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Auto-Clear Rate</div>
+
+                <div style={{ background: '#f5f7fa', padding: '10px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#0066cc' }}>~15–120+ Hrs</div>
+                  <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', marginTop: '2px' }}>Saved / Month (Varies by Volume)*</div>
                 </div>
-                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent-emerald)' }}>~15–120+ Hrs</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Saved / Months (Varies by Volume)*</div>
+
+                <div style={{ background: '#f5f7fa', padding: '10px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Zero</div>
+                  <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', marginTop: '2px' }}>Recurring SaaS Fee</div>
                 </div>
-                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>Zero</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Recurring Software Fee</div>
-                </div>
-                <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--accent-amber)' }}>100%</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginTop: '4px' }}>Yardi Native Solution</div>
+
+                <div style={{ background: '#f5f7fa', padding: '10px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#0055aa' }}>100%</div>
+                  <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', marginTop: '2px' }}>Yardi Voyager Native</div>
                 </div>
               </div>
             </div>
+
           </div>
 
           {/* Key Advantages Grid */}
-          <div className="glass-card" style={{ padding: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <div style={{ padding: '10px', background: 'rgba(6, 182, 212, 0.15)', borderRadius: '10px', color: 'var(--accent-cyan)' }}>
-                <CheckCircle size={24} />
-              </div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Key Solution Advantages</h3>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+            <div className="yardi-panel-title">Key Solution Advantages</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
               {keyAdvantages.map((adv, idx) => (
-                <div key={idx} style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)', marginBottom: '6px' }}>
-                    <CheckCircle size={16} color="var(--accent-emerald)" style={{ flexShrink: 0 }} />
-                    {adv.title}
+                <div key={idx} style={{ background: '#f9fbfd', padding: '10px', border: '1px solid #e0e6ed', borderRadius: '2px' }}>
+                  <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#003366', marginBottom: '4px' }}>
+                    ✔ {adv.title}
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                  <div style={{ fontSize: '11px', color: '#555555', lineHeight: 1.4 }}>
                     {adv.desc}
-                  </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -132,72 +98,57 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       title: "Seamless Daily Automated Accounting Flow",
       subtitle: "Direct bank-to-Yardi synchronization with zero manual data file uploads.",
       content: (
-        <div style={{ marginTop: '24px' }}>
-          {/* Visual Operations Pipeline */}
-          <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
-            <h4 style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '20px' }}>
-              End-to-End Financial Reconciliation Process
-            </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', alignItems: 'center' }}>
+        <div style={{ marginTop: '16px' }}>
+          
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0', marginBottom: '16px' }}>
+            <div className="yardi-panel-title">End-to-End Financial Reconciliation Process</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', alignItems: 'center' }}>
 
-              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                <Building2 size={28} color="var(--accent-cyan)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>1. Bank Partner Intake</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Daily electronic feeds from JPMorgan, Wells Fargo, Bank of America, etc.</div>
+              <div style={{ background: '#f5f7fa', padding: '12px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#004b87' }}>1. Bank Partner Intake</div>
+                <div style={{ fontSize: '10px', color: '#555', marginTop: '4px' }}>Daily electronic feeds from JPMorgan, Wells Fargo, Bank of America, etc.</div>
               </div>
 
-              <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--accent-cyan)', textAlign: 'center' }}>
-                <ArrowRight size={20} style={{ margin: '0 auto' }} />
+              <div style={{ fontSize: '14px', color: '#004b87', textAlign: 'center', fontWeight: 'bold' }}>➔</div>
+
+              <div style={{ background: '#f5f7fa', padding: '12px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#004b87' }}>2. Data Validation</div>
+                <div style={{ fontSize: '10px', color: '#555', marginTop: '4px' }}>Standardized statement normalization</div>
               </div>
 
-              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                <ShieldCheck size={28} color="var(--accent-amber)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>2. Data Validation</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Standardized statement normalization</div>
+              <div style={{ fontSize: '14px', color: '#004b87', textAlign: 'center', fontWeight: 'bold' }}>➔</div>
+
+              <div style={{ background: '#f5f7fa', padding: '12px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#004b87' }}>3. Yardi Voyager Intake</div>
+                <div style={{ fontSize: '10px', color: '#555', marginTop: '4px' }}>Direct ingestion into Voyager Cash Module</div>
               </div>
 
-              <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--accent-cyan)', textAlign: 'center' }}>
-                <ArrowRight size={20} style={{ margin: '0 auto' }} />
-              </div>
+              <div style={{ fontSize: '14px', color: '#004b87', textAlign: 'center', fontWeight: 'bold' }}>➔</div>
 
-              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                <Layers size={28} color="var(--accent-purple)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>3. Yardi Voyager Intake</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Direct ingestion into Voyager Cash Module</div>
-              </div>
-
-              <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--accent-cyan)', textAlign: 'center' }}>
-                <ArrowRight size={20} style={{ margin: '0 auto' }} />
-              </div>
-
-              <div style={{ background: 'var(--inner-card-bg)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                <TrendingUp size={28} color="var(--accent-emerald)" style={{ margin: '0 auto 8px' }} />
-                <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-main)' }}>4. Rules Auto-Clearing</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>91%+ clearance rate</div>
+              <div style={{ background: '#f5f7fa', padding: '12px', border: '1px solid #d0d0d0', textAlign: 'center' }}>
+                <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#004b87' }}>4. Rules Auto-Clearing</div>
+                <div style={{ fontSize: '10px', color: '#555', marginTop: '4px' }}>91%+ clearance rate</div>
               </div>
 
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div className="glass-card" style={{ padding: '20px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '8px', color: 'var(--accent-cyan)' }}>
-                Multi-Bank Compatibility Out-of-the-Box
-              </h4>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                The solution is based on industry-standard bank formats: <strong style={{ color: 'var(--text-main)' }}>BI2</strong>, <strong style={{ color: 'var(--text-main)' }}>CAMT 53</strong>, and <strong style={{ color: 'var(--text-main)' }}>MT 940</strong>. Banks supporting these formats should work seamlessly with the solution (including JPMorgan, Wells Fargo, Bank of America, Citizens Bank, East West Bank, Northern Trust, Santander, BNY Mellon, Key Bank, Citi, UMB, First Citizens, Western Alliance, BMO, etc.).
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+              <div className="yardi-panel-title">Multi-Bank Compatibility Out-of-the-Box</div>
+              <p style={{ fontSize: '11px', color: '#333333', lineHeight: 1.5 }}>
+                The solution is based on industry-standard bank formats: <strong>BAI2</strong>, <strong>CAMT 53</strong>, and <strong>MT 940</strong>. Banks supporting these formats should work seamlessly with the solution (including JPMorgan, Wells Fargo, Bank of America, Citizens Bank, East West Bank, Northern Trust, Santander, BNY Mellon, Key Bank, Citi, UMB, First Citizens, Western Alliance, BMO, etc.).
               </p>
             </div>
 
-            <div className="glass-card" style={{ padding: '20px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '12px', color: 'var(--accent-emerald)' }}>
-                Automated Journal Entries
-              </h4>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Automatically creates and posts journal entries for recurring monthly bank fees and credit interest income directly to pre-configured general ledger accounts.
+            <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+              <div className="yardi-panel-title">Automated Journal Entries</div>
+              <p style={{ fontSize: '11px', color: '#333333', lineHeight: 1.5 }}>
+                Automatically creates and posts journal entries for recurring monthly bank fees and credit interest income directly to pre-configured general ledger accounts with complete audit logging.
               </p>
             </div>
           </div>
+
         </div>
       )
     },
@@ -207,46 +158,40 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       title: "Multi-Level Intelligent Matching Engine",
       subtitle: "Configurable matching criteria leveraging bank transaction codes, reference numbers, customer memo text, and exact amounts.",
       content: (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '24px' }}>
-          <div className="glass-card" style={{ padding: '20px' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
-              1. Exact Reference Match
-            </h4>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '12px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginTop: '16px' }}>
+          
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+            <div className="yardi-panel-title">1. Exact Reference Match</div>
+            <p style={{ fontSize: '11px', color: '#555', marginBottom: '8px' }}>
               Matches items on check number, exact payment reference, or wire reference ID.
             </p>
-            <div className="badge badge-success">Precision Match</div>
+            <span style={{ background: '#d4edda', color: '#155724', padding: '2px 6px', fontSize: '10px', fontWeight: 'bold' }}>Precision Match</span>
           </div>
 
-          <div className="glass-card" style={{ padding: '20px' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
-              2. Lockbox & Tenant ACH Matching
-            </h4>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '12px' }}>
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+            <div className="yardi-panel-title">2. Lockbox & Tenant ACH Matching</div>
+            <p style={{ fontSize: '11px', color: '#555', marginBottom: '8px' }}>
               Parses bank customer reference strings and tenant IDs to automatically match lockbox deposits against open tenant receivables.
             </p>
-            <div className="badge badge-info">Tenant Lockbox Automation</div>
+            <span style={{ background: '#cce5ff', color: '#004085', padding: '2px 6px', fontSize: '10px', fontWeight: 'bold' }}>Tenant Automation</span>
           </div>
 
-          <div className="glass-card" style={{ padding: '20px' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
-              3. Automated GL Fee Booking
-            </h4>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '12px' }}>
-              Auto-books monthly account service charges and interest income directly to designated GL cash accounts with full audit logs.
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+            <div className="yardi-panel-title">3. Automated GL Fee Booking</div>
+            <p style={{ fontSize: '11px', color: '#555', marginBottom: '8px' }}>
+              Auto-books monthly account service charges and interest income directly to designated GL cash accounts.
             </p>
-            <div className="badge badge-purple">Zero Manual Entry</div>
+            <span style={{ background: '#e2e3e5', color: '#383d41', padding: '2px 6px', fontSize: '10px', fontWeight: 'bold' }}>Zero Manual Entry</span>
           </div>
 
-          <div className="glass-card" style={{ padding: '20px' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
-              4. Multi-Rule & Fuzzy Logic Engine
-            </h4>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '12px' }}>
-              Employs multi-level criteria and intelligent fuzzy matching logic to clear complex or partial reference statement lines.
+          <div className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0' }}>
+            <div className="yardi-panel-title">4. Multi-Rule & Fuzzy Logic Engine</div>
+            <p style={{ fontSize: '11px', color: '#555', marginBottom: '8px' }}>
+              Employs multi-level criteria and intelligent fuzzy matching logic to clear complex statement lines.
             </p>
-            <div className="badge badge-success">Fuzzy Matching Engine</div>
+            <span style={{ background: '#d4edda', color: '#155724', padding: '2px 6px', fontSize: '10px', fontWeight: 'bold' }}>Fuzzy Match Engine</span>
           </div>
+
         </div>
       )
     },
@@ -256,27 +201,26 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       title: "Standard 3-Step Client Onboarding Plan",
       subtitle: "A proven, structured deployment plan that brings your bank reconciliation live in 3 weeks.",
       content: (
-        <div style={{ marginTop: '20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px', maxHeight: '420px', overflowY: 'auto', paddingRight: '6px' }}>
+        <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {implementationRoadmap.map((item) => (
-            <div key={item.step} className="glass-card" style={{ padding: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+            <div key={item.step} className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0', padding: '12px 16px', display: 'flex', gap: '14px', alignItems: 'center' }}>
               <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '8px',
-                background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-blue))',
+                width: '28px',
+                height: '28px',
+                background: '#004b87',
                 color: '#ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '0.9rem',
-                flexShrink: 0
+                fontWeight: 'bold',
+                fontSize: '13px',
+                borderRadius: '2px'
               }}>
                 {item.step}
               </div>
               <div>
-                <h5 style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '4px' }}>{item.title}</h5>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{item.desc}</p>
+                <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#000' }}>{item.title}</div>
+                <div style={{ fontSize: '11px', color: '#555' }}>{item.desc}</div>
               </div>
             </div>
           ))}
@@ -288,51 +232,55 @@ export default function PresentationDeck({ onNavigateToDemo }) {
   const current = slides[currentSlide];
 
   return (
-    <div className="animate-fade-in">
+    <div style={{ padding: '4px' }}>
+      
+      {/* Top Banner Tab */}
+      <div className="yardi-sheet-tab-container" style={{ marginTop: '0', paddingLeft: '20px' }}>
+        <div className="yardi-sheet-tab" style={{ fontWeight: 'bold' }}>{current.tag}</div>
+      </div>
 
-      {/* Slide Header Control */}
-      <div className="glass-panel" style={{ padding: '24px 32px', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <span className="badge badge-info">{current.tag}</span>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+      {/* Main Yardi Report Canvas */}
+      <div className="yardi-report-canvas">
+        
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#000000' }}>
+            {current.title}
+          </div>
+          <div style={{ fontSize: '11px', color: '#555', fontWeight: 'bold' }}>
             Slide {currentSlide + 1} of {slides.length}
           </div>
         </div>
 
-        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '8px', letterSpacing: '-0.02em' }}>
-          {current.title}
-        </h2>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '850px' }}>
+        <div style={{ fontSize: '12px', color: '#444444', marginBottom: '16px' }}>
           {current.subtitle}
-        </p>
+        </div>
 
-        {/* Main Slide Content */}
+        {/* Slide Body */}
         {current.content}
 
         {/* Slide Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '32px', paddingTop: '20px', borderTop: '1px solid var(--border-color)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '24px', paddingTop: '12px', borderTop: '1px solid #d0d0d0' }}>
           <button
             onClick={() => setCurrentSlide(prev => Math.max(0, prev - 1))}
             disabled={currentSlide === 0}
-            className="btn btn-secondary"
+            className="yardi-btn"
             style={{ opacity: currentSlide === 0 ? 0.5 : 1, cursor: currentSlide === 0 ? 'not-allowed' : 'pointer' }}
           >
-            <ChevronLeft size={18} /> Previous Slide
+            ◄ Previous Slide
           </button>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div style={{ display: 'flex', gap: '6px' }}>
             {slides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
                 style={{
-                  width: idx === currentSlide ? '28px' : '10px',
-                  height: '10px',
-                  borderRadius: '5px',
-                  background: idx === currentSlide ? 'var(--accent-cyan)' : 'var(--bg-card-hover)',
+                  width: idx === currentSlide ? '20px' : '8px',
+                  height: '8px',
+                  borderRadius: '2px',
+                  background: idx === currentSlide ? '#004b87' : '#cccccc',
                   border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.25s ease'
+                  cursor: 'pointer'
                 }}
               />
             ))}
@@ -341,20 +289,21 @@ export default function PresentationDeck({ onNavigateToDemo }) {
           {currentSlide < slides.length - 1 ? (
             <button
               onClick={() => setCurrentSlide(prev => Math.min(slides.length - 1, prev + 1))}
-              className="btn btn-primary"
+              className="yardi-btn"
             >
-              Next Slide <ChevronRight size={18} />
+              Next Slide ►
             </button>
           ) : (
             <button
               onClick={() => onNavigateToDemo('launcher')}
-              className="btn btn-primary"
-              style={{ background: 'linear-gradient(135deg, var(--accent-emerald), #059669)' }}
+              className="yardi-btn"
+              style={{ fontWeight: 'bold', background: '#d4e6f1' }}
             >
-              Explore Interactive Demo <ArrowRight size={18} />
+              Launch Interactive Yardi Demo ►
             </button>
           )}
         </div>
+
       </div>
 
     </div>

@@ -8,31 +8,31 @@ import FileLogsDemo from './components/FileLogsDemo';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('presentation');
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false); // Default to Yardi Voyager Native Light Theme
 
   useEffect(() => {
-    if (!darkMode) {
-      document.body.classList.add('light-mode');
+    if (darkMode) {
+      document.body.classList.add('dark-mode-override');
     } else {
-      document.body.classList.remove('light-mode');
+      document.body.classList.remove('dark-mode-override');
     }
   }, [darkMode]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
-      {/* Container */}
-      <div style={{ maxWidth: '1400px', width: '100%', margin: '0 auto', padding: '0 20px 40px' }}>
-        
-        <Header
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-        />
+      <Header
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
 
+      {/* Main Container */}
+      <div style={{ maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 16px 30px', flex: 1 }}>
+        
         {/* Active Tab View */}
-        <main style={{ flex: 1 }}>
+        <main>
           {activeTab === 'presentation' && (
             <PresentationDeck onNavigateToDemo={(tab) => setActiveTab(tab)} />
           )}
@@ -54,24 +54,24 @@ export default function App() {
           )}
         </main>
 
-        {/* Footer */}
+        {/* Yardi Footer Bar */}
         <footer style={{
-          marginTop: '60px',
-          paddingTop: '20px',
-          borderTop: '1px solid var(--border-color)',
+          marginTop: '40px',
+          paddingTop: '12px',
+          borderTop: '1px solid #c0c0c0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.8rem',
-          color: 'var(--text-muted)',
+          fontSize: '11px',
+          color: '#555555',
           flexWrap: 'wrap',
           gap: '12px'
         }}>
           <div>
-            Yardi Voyager Auto Bank Reconciliation Module &copy; 2026 | Finance Solution Demo
+            Yardi Voyager® Auto Bank Reconciliation System &copy; 2026 | Enterprise Financial Solution
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
-            <span>Yardi Voyager Integration</span>
+            <span>Native Yardi Voyager® Architecture</span>
           </div>
         </footer>
 
