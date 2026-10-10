@@ -199,9 +199,25 @@ export default function PresentationDeck({ onNavigateToDemo }) {
       id: "roadmap",
       tag: "FINANCE ROLLOUT ROADMAP",
       title: "Standard 3-Step Client Onboarding Plan",
-      subtitle: "A proven, structured deployment plan that brings your bank reconciliation live in 3 weeks.",
+      subtitle: (
+        <span>
+          A proven, structured deployment plan that brings your bank reconciliation live in{' '}
+          <span style={{
+            background: '#fff3cd',
+            color: '#856404',
+            padding: '2px 8px',
+            borderRadius: '4px',
+            fontWeight: 'bold',
+            border: '1px solid #ffeeba',
+            display: 'inline-block'
+          }}>
+            3 weeks
+          </span>.
+        </span>
+      ),
       content: (
         <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+
           {implementationRoadmap.map((item) => (
             <div key={item.step} className="yardi-panel" style={{ background: '#ffffff', border: '1px solid #b8c4d0', padding: '12px 16px', display: 'flex', gap: '14px', alignItems: 'center' }}>
               <div style={{

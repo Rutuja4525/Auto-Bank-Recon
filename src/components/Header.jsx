@@ -5,30 +5,40 @@ export default function Header({ activeTab, setActiveTab, darkMode, setDarkMode 
   return (
     <header style={{ width: '100%', marginBottom: '16px' }}>
       
-      {/* Yardi Voyager Top Navy Header Bar */}
+      {/* Yardi Voyager & LogiPrime Top Header Bar */}
       <div className="yardi-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: '#ffffff',
+            padding: '3px 10px',
+            borderRadius: '4px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.15)'
+          }}>
+            <img 
+              src="/logiprime-logo.png" 
+              alt="LogiPrime Solutions" 
+              style={{ height: '28px', width: 'auto', display: 'block', objectFit: 'contain' }} 
+            />
+          </div>
           <div className="yardi-logo-text">
             <span>Yardi Voyager®</span>
             <span className="yardi-logo-tag">AUTOMATED BANK RECONCILIATION</span>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '11px' }}>
-          <span>User: <strong>Accounting Admin (fivf3lp)</strong></span>
-          <span style={{ opacity: 0.6 }}>|</span>
-          <span>Entity: <strong>Metro Plaza Portfolio (PRP-1004)</strong></span>
-          <span style={{ opacity: 0.6 }}>|</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '11px' }}>
           <button
             onClick={() => setDarkMode(!darkMode)}
             style={{
               background: 'transparent',
               border: '1px solid rgba(255,255,255,0.3)',
               color: '#ffffff',
-              padding: '2px 8px',
+              padding: '3px 10px',
               fontSize: '11px',
               cursor: 'pointer',
-              borderRadius: '2px',
+              borderRadius: '3px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '4px'

@@ -54,24 +54,39 @@ export default function App() {
           )}
         </main>
 
-        {/* Yardi Footer Bar */}
+        {/* LogiPrime & Yardi Footer Bar */}
         <footer style={{
           marginTop: '40px',
-          paddingTop: '12px',
-          borderTop: '1px solid #c0c0c0',
+          padding: '16px 20px',
+          borderTop: '1px solid var(--yardi-nav-border, #c0c0c0)',
+          background: 'var(--yardi-panel-bg, #ffffff)',
+          borderRadius: '4px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           fontSize: '11px',
           color: '#555555',
           flexWrap: 'wrap',
-          gap: '12px'
+          gap: '16px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
         }}>
-          <div>
-            Yardi Voyager® Auto Bank Reconciliation System &copy; 2026 | Enterprise Financial Solution
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{
+              background: '#ffffff',
+              padding: '3px 8px',
+              borderRadius: '4px',
+              border: '1px solid #d0d0d0',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <img src="/logiprime-logo.png" alt="LogiPrime Solutions" style={{ height: '24px', width: 'auto' }} />
+            </div>
+            <div>
+              <strong>LogiPrime Solutions</strong> &copy; 2026 | Yardi Voyager® Automated Bank Reconciliation
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <span>Native Yardi Voyager® Architecture</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', color: '#666666' }}>
+            <span>Native Yardi Voyager® Integration</span>
           </div>
         </footer>
 

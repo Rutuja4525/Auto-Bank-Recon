@@ -3,7 +3,7 @@ import { transactionsData } from '../data/mockData';
 
 export default function TransactionListDemo() {
   const [bankCodeInput, setBankCodeInput] = useState("f2co8727");
-  const [bankNameLabel, setBankNameLabel] = useState("KUSH-KUSH, LP LOCKBOX");
+  const [bankNameLabel, setBankNameLabel] = useState("");
   const [propertyInput, setPropertyInput] = useState("");
   const [dateFrom, setDateFrom] = useState("09/01/2026");
   const [dateTo, setDateTo] = useState("09/30/2026");
